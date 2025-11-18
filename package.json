@@ -8,7 +8,7 @@
     "url": "git@gitlab.var-meta.com:var-ai/quant-trading/var-quant-ui.git"
   },
   "scripts": {
-    "dev": "yarn clean && next dev --turbopack",
+    "dev": "yarn clean && next dev --turbopack -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "biome lint .",
@@ -22,7 +22,10 @@
     "clean": "rimraf .next out"
   },
   "lint-staged": {
-    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": ["yarn lint:fix", "yarn format:fix"]
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "yarn lint:fix",
+      "yarn format:fix"
+    ]
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
