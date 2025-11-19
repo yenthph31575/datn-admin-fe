@@ -11,7 +11,6 @@ export const useOrderByIdQuery = createQuery<IOrder, string>({
   queryKey: ['order'],
   fetcher: (id) => getOrderById(id),
 });
-
 export const useUpdateOrderStatusMutation = createMutation<IOrder, { id: string; status: string; note: string }>({
   mutationFn: ({ id, status, note }) => updateOrderStatus({ id, status, note }),
 });

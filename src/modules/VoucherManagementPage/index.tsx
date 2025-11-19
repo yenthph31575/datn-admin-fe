@@ -15,7 +15,6 @@ const defaultQuery = {
   page: 1,
   limit: 10,
 };
-
 const VoucherManagementPage = () => {
   const [paramsQuery, setParamsQuery] = useState<Partial<IVoucherQuery>>(defaultQuery);
 
