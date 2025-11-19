@@ -22,6 +22,7 @@ const VoucherManagementPage = () => {
     variables: paramsQuery,
   });
 
+  
   return (
     <Container>
       <H1 className="mb-8 font-orbitron">Quản lý voucher</H1>
