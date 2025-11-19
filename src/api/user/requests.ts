@@ -44,7 +44,6 @@ export const changeAdminPassword = async ({
   });
   return data?.data;
 };
-
 export const toggleUserStatus = async ({ id, isActive }: { id: string; isActive: boolean }): Promise<IAdmin> => {
   const { data } = await client({
     url: `/api/admin/users/${id}`,
