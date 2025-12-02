@@ -42,7 +42,7 @@ const LoginPage = () => {
         });
         setUser(user);
         router.replace(ROUTER.HOME);
-        toast.success('You have logged in successfully!');
+        toast.success('Đăng nhập thành công!');
       },
       onError: onMutateError,
     });
@@ -50,15 +50,30 @@ const LoginPage = () => {
 
   return (
     <VStack justify="center" align="center" className="mx-2 h-[100vh]">
-      <div className="-z-10 fixed inset-0 bg-cover bg-repeat opacity-65" style={{ backgroundImage: "url('/images/background.png')" }}>
-        <div className="h-full w-full" style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}></div>
+      <div
+        className="-z-10 fixed inset-0 bg-cover bg-repeat opacity-65"
+        style={{ backgroundImage: "url('/images/background.png')" }}
+      >
+        <div
+          className="h-full w-full"
+          style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}
+        ></div>
       </div>
 
       <HStack className="mb-3" pos="center">
-        <Image width={150} height={92} src="/images/logo.png" alt="battle logo" className="h-auto w-[12rem]" />
+        <Image
+          width={150}
+          height={92}
+          src="/images/logo.png"
+          alt="Logo"
+          className="h-auto w-[12rem]"
+        />
       </HStack>
+
       <VStack className="w-full max-w-[450px] rounded-lg border bg-[#FFFFFF26] px-6 py-6 shadow-card-2 md:px-8" spacing={16}>
-        <h1 className="mb-5 text-center font-semibold text-2xl md:text-3xl">Admin Login</h1>
+        <h1 className="mb-5 text-center font-semibold text-2xl md:text-3xl">
+          Đăng nhập Admin
+        </h1>
 
         <FormWrapper form={form} onSubmit={handleSubmit}>
           <VStack spacing={32}>
@@ -68,16 +83,17 @@ const LoginPage = () => {
               fullWidth
               control={form.control}
               name="identifier"
-              label="Username"
-              placeholder="Mời nhập username"
+              label="Tên đăng nhập"
+              placeholder="Mời nhập tên đăng nhập"
             />
+
             <TextField
               required
               fullWidth
               control={form.control}
               name="password"
-              label="Password"
-              placeholder="Mời nhập password"
+              label="Mật khẩu"
+              placeholder="Mời nhập mật khẩu"
               type="password"
               inputSize="md"
             />
@@ -85,7 +101,7 @@ const LoginPage = () => {
 
           <HStack pos="center">
             <Button type="submit" className="mt-8 mb-2 px-10" loading={isLoading}>
-              Sign in
+              Đăng nhập
             </Button>
           </HStack>
         </FormWrapper>
