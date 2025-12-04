@@ -5,7 +5,7 @@ import type { IProduct, IProductQuery, IProductResponse } from './types';
 export const getProducts = async (params: Partial<IProductQuery>): Promise<IProductResponse> => {
   const { data } = await client({
     url: '/api/admin/products',
-    method: 'GET',
+    method: 'POST',
     params,
   });
   return data?.data;
