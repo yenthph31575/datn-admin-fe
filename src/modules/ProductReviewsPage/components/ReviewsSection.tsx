@@ -24,7 +24,7 @@ const ReviewsSection = ({ product, reviews, isLoading, pagination, onPageChange,
       {/* Reviews Stats Card */}
       <Card>
         <CardHeader className="pb-2">
-          <CardTitle className="text-xl">Reviews Overview</CardTitle>
+          <CardTitle className="text-xl">Đánh giá sản phẩm</CardTitle>
         </CardHeader>
         <CardContent>
           <ReviewsStats product={product} reviews={reviews} />
@@ -35,13 +35,13 @@ const ReviewsSection = ({ product, reviews, isLoading, pagination, onPageChange,
       <Card className="lg:col-span-2">
         <CardHeader className="pb-2">
           <HStack pos="apart">
-            <CardTitle className="text-xl">Reviews List</CardTitle>
+            <CardTitle className="text-xl">Danh sách đánh giá</CardTitle>
             <HStack spacing={4}>
               <Badge variant="outline" className="flex items-center gap-1">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                 <span>{product?.averageRating?.toFixed(1) || '0.0'}</span>
               </Badge>
-              <Badge variant="outline">{product?.reviewCount || 0} reviews</Badge>
+              <Badge variant="outline">{product?.reviewCount || 0} đánh giá</Badge>
             </HStack>
           </HStack>
         </CardHeader>

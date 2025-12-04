@@ -16,7 +16,7 @@ const TopProducts = () => {
     return (
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Top Products</CardTitle>
+          <CardTitle>Top sản phẩm</CardTitle>
           <Skeleton className="h-4 w-20" />
         </CardHeader>
         <CardContent>

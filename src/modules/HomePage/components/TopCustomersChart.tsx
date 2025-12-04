@@ -76,8 +76,8 @@ const TopCustomersChart = () => {
               <SelectValue placeholder="Metric" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="totalSpent">Total Spent</SelectItem>
-              <SelectItem value="orderCount">Order Count</SelectItem>
+              <SelectItem value="totalSpent">Tổng chi tiêu</SelectItem>
+              <SelectItem value="orderCount">Số lượng đơn hàng</SelectItem>
             </SelectContent>
           </Select>
 
