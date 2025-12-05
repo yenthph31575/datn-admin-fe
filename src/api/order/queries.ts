@@ -21,7 +21,7 @@ export const useUpdateShippingStatusMutation = createMutation<
   IOrder,
   { id: string; status: string; userNote: string; shipperOfProof: string[] }
 >({
-  mutationFn: ({ id, status, shipperOfProof, userNote }) => updateShippingStatus({ id, status, userNote, shipperOfProof }),
+  mutationFn: ({ id, shipperOfProof, userNote }) => updateShippingStatus({ id, status, userNote, shipperOfProof }),
 });
 
 export const useUpdatePaymentStatusMutation = createMutation<IOrder, { id: string; status: string }>({
