@@ -1,6 +1,6 @@
 import type { FC, PropsWithChildren } from "react";
 
-export type FCC<P = {}> = FC<PropsWithChildren<P>>;
+export type FCC<P = object> = FC<PropsWithChildren<P>>;
 
 export interface IHomeUser {
   id: number;
@@ -36,40 +36,36 @@ export interface ErrorMutate {
   code: number;
   error_code?: string;
   message: string | string[];
-  dynamic_data?: {};
+  dynamic_data?: Record<string, unknown>;
 }
 
-export function getHomeUsers(): IHomeUser[] {
-  return [
-    {
-      id: 1,
-      name: "Nguyễn Văn A",
-      email: "a@gmail.com",
-      role: "admin",
-      created_at: "2024-01-02",
-    },
-    {
-      id: 2,
-      name: "Trần Thị B",
-      email: "b@gmail.com",
-      role: "user",
-      created_at: "2024-03-15",
-    },
-    {
-      id: 3,
-      name: "Hoàng Xuân Trường",
-      email: "hoangxuantruong2403@gmail.com",
-      role: "member",
-      created_at: "2024-05-10",
-    },
-  ];
-}
+export const getHomeUsers = (): IHomeUser[] => [
+  {
+    id: 1,
+    name: "Nguyễn Văn A",
+    email: "a@gmail.com",
+    role: "admin",
+    created_at: "2024-01-02",
+  },
+  {
+    id: 2,
+    name: "Trần Thị B",
+    email: "b@gmail.com",
+    role: "user",
+    created_at: "2024-03-15",
+  },
+  {
+    id: 3,
+    name: "Hoàng Xuân Trường",
+    email: "hoangxuantruong2403@gmail.com",
+    role: "member",
+    created_at: "2024-05-10",
+  },
+];
 
-export function countUsers(users: IHomeUser[]): number {
-  return users.length;
-}
+export const countUsers = (users: IHomeUser[]): number => users.length;
 
-export function getHomeUserResponse(): IHomeApiResponse<IHomeUser[]> {
+export const getHomeUserResponse = (): IHomeApiResponse<IHomeUser[]> => {
   const users = getHomeUsers();
   return {
     data: users,
@@ -82,8 +78,11 @@ export function getHomeUserResponse(): IHomeApiResponse<IHomeUser[]> {
     },
     message: "Lấy danh sách user thành công",
   };
-}
+};
 
-console.log("Danh sách user:", getHomeUsers());
-console.log("Tổng user:", countUsers(getHomeUsers()));
-console.log("API Response:", getHomeUserResponse());
+// Chỉ chạy log khi ở chế độ development
+if (process.env.NODE_ENV !== "production") {
+  console.log("Danh sách user:", getHomeUsers());
+  console.log("Tổng user:", countUsers(getHomeUsers()));
+  console.log("API Response:", getHomeUserResponse());
+}
