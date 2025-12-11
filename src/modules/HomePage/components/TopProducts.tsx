@@ -16,7 +16,7 @@ const TopProducts = () => {
     return (
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Top sản phẩm</CardTitle>
+          <CardTitle>Sản phẩm nổi bật</CardTitle>
           <Skeleton className="h-4 w-20" />
         </CardHeader>
         <CardContent>
@@ -49,9 +49,10 @@ const TopProducts = () => {
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Sản phẩm bán chạy nhất</CardTitle>
         {/* <Link href={ROUTER.PRODUCT_MANAGEMENT} className="text-blue-500 text-sm hover:underline">
-          View All
+          Xem tất cả
         </Link> */}
       </CardHeader>
+
       <CardContent>
         {topProducts?.length === 0 ? (
           <div className="py-8 text-center text-gray-500">
@@ -75,6 +76,7 @@ const TopProducts = () => {
                       className="h-full w-full object-cover"
                     />
                   </div>
+
                   <div>
                     <div className="line-clamp-1 font-medium text-sm">{product.name}</div>
                     <div className="flex gap-2 text-gray-500 text-xs">
@@ -84,10 +86,11 @@ const TopProducts = () => {
                     </div>
                   </div>
                 </div>
+
                 <div className="flex-shrink-0 text-right">
                   <div className="font-medium text-sm">Trong kho: {product.stock}</div>
                   <div className={`text-xs ${product.stock < 20 ? 'text-red-500' : 'text-green-500'}`}>
-                    {product.stock < 20 ? 'Low Stock' : 'In Stock'}
+                    {product.stock < 20 ? 'Sắp hết hàng' : 'Còn hàng'}
                   </div>
                 </div>
               </Link>
