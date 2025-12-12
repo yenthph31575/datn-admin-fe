@@ -1,4 +1,5 @@
 'use client';
+
 import { useAdminsQuery } from '@/api/admin/queries';
 import type { IAdminQuery } from '@/api/admin/types';
 import SearchTable from '@/components/SearchTable';
@@ -14,6 +15,7 @@ const defaultQuery = {
   page: 1,
   limit: 10,
 };
+
 const AdminManagementPage = () => {
   const [paramsQuery, setParamsQuery] = useState<Partial<IAdminQuery>>(defaultQuery);
 
