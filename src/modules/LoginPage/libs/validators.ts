@@ -2,16 +2,16 @@ import { validationMessages } from '@/libs/validation.utility';
 import { z } from 'zod';
 
 export const authSchema = z.object({
-  identifier: z.string({ required_error: 'Username is required' }).nonempty(validationMessages.required('Username')),
+  identifier: z.string({ required_error: 'Tên đăng nhập không được để trống' }).nonempty(validationMessages.required('Username')),
   password: z
-    .string({ required_error: 'Password is required' })
+    .string({ required_error: 'Mật khẩu là bắt buộc' })
     .nonempty(validationMessages.required('Password'))
     .min(6, {
-      message: 'The username or password you entered is incorrect!',
+      message: 'Tên đăng nhập hoặc mật khẩu bạn nhập không đúng!',
     })
     .max(100)
     .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/, {
-      message: 'The username or password you entered is incorrect!',
+      message: 'Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.',
     }),
 });
 
