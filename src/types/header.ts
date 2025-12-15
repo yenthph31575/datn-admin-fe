@@ -8,6 +8,7 @@ export interface CartItem {
   image?: string;
 }
 
+// 👉 payload khi thêm vào giỏ (không cần quantity)
 type AddItemPayload = Omit<CartItem, "quantity">;
 
 interface CartState {
@@ -26,16 +27,14 @@ export const useCartStore = create<CartState>((set) => ({
     set((state) => {
       const exists = state.items.find((i) => i.id === item.id);
 
-      if (exists) {
-        return {
-          items: state.items.map((i) =>
-            i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-          ),
-        };
-      }
-
       return {
-        items: [...state.items, { ...item, quantity: 1 }],
+        items: exists
+          ? state.items.map((i) =>
+              i.id === item.id
+                ? { ...i, quantity: i.quantity + 1 }
+                : i
+            )
+          : [...state.items, { ...item, quantity: 1 }],
       };
     }),
 
