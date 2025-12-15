@@ -8,9 +8,11 @@ export interface CartItem {
   image?: string;
 }
 
+type AddItemPayload = Omit<CartItem, "quantity">;
+
 interface CartState {
   items: CartItem[];
-  addItem: (item: CartItem) => void;
+  addItem: (item: AddItemPayload) => void;
   removeItem: (id: number) => void;
   clearCart: () => void;
   increase: (id: number) => void;
@@ -32,15 +34,10 @@ export const useCartStore = create<CartState>((set) => ({
         };
       }
 
-      return { items: [...state.items, { ...item, quantity: 1 }] };
+      return {
+        items: [...state.items, { ...item, quantity: 1 }],
+      };
     }),
-
-  removeItem: (id) =>
-    set((state) => ({
-      items: state.items.filter((i) => i.id !== id),
-    })),
-
-  clearCart: () => set({ items: [] }),
 
   increase: (id) =>
     set((state) => ({
@@ -57,4 +54,11 @@ export const useCartStore = create<CartState>((set) => ({
         )
         .filter((i) => i.quantity > 0),
     })),
+
+  removeItem: (id) =>
+    set((state) => ({
+      items: state.items.filter((i) => i.id !== id),
+    })),
+
+  clearCart: () => set({ items: [] }),
 }));
