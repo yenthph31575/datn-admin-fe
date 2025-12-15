@@ -8,7 +8,6 @@ export interface CartItem {
   image?: string;
 }
 
-// Khi add vào giỏ không cần truyền quantity
 type AddItemPayload = Omit<CartItem, "quantity">;
 
 interface CartState {
@@ -17,9 +16,13 @@ interface CartState {
   removeItem: (id: number) => void;
   clearCart: () => void;
   updateQuantity: (id: number, delta: number) => void;
+
+  // 👉 thêm
+  totalQuantity: () => number;
+  totalPrice: () => number;
 }
 
-export const useCartStore = create<CartState>((set) => ({
+export const useCartStore = create<CartState>((set, get) => ({
   items: [],
 
   addItem: (item) =>
@@ -58,4 +61,12 @@ export const useCartStore = create<CartState>((set) => ({
     })),
 
   clearCart: () => set({ items: [] }),
+
+  // 👉 tổng số lượng
+  totalQuantity: () =>
+    get().items.reduce((sum, i) => sum + i.quantity, 0),
+
+  // 👉 tổng tiền
+  totalPrice: () =>
+    get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
 }));
