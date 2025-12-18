@@ -4,7 +4,7 @@ import type { IBannerResponse, IBanner, IBannerQuery } from './types';
 import type { BannerSchema } from '@/modules/BannerManagementPage/libs/validators';
 
 export const useBanners = createQuery<IBannerResponse, Partial<IBannerQuery>>({
-  queryKey: ['admin/banners'],
+  queryKey: ['admin/banner'],
   fetcher: (params) => getBanners(params),
 });
 
