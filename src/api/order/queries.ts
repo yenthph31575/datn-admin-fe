@@ -3,7 +3,7 @@ import { getOrderById, getOrders, updateOrderStatus, updatePaymentStatus, update
 import type { IOrder, IOrderQuery, IOrderResponse } from './types';
 
 export const useOrdersQuery = createQuery<IOrderResponse, Partial<IOrderQuery>>({
-  queryKey: ['admin/orders'],
+  queryKey: ['admin/order'],
   fetcher: (params) => getOrders(params),
 });
 
