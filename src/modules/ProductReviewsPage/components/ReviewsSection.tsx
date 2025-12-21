@@ -3,7 +3,7 @@ import type { IReview } from '@/api/review/types';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { HStack } from '@/components/utilities';
-import type { IMetaResponse } from '@/types';
+import type { IMetaResponse } from '@/types/header';
 import { Star } from 'lucide-react';
 import React from 'react';
 import ProductReviewsTable from './ProductReviewsTable';

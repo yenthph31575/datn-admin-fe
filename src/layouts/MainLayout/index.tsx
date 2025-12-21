@@ -1,7 +1,7 @@
 import { type ReactNode, useEffect } from 'react';
 
 import { useAppStore } from '@/stores/AppStore';
-import type { FCC } from '@/types';
+import type { FCC } from '@/types/header';
 
 import { HStack } from '@/components/utilities';
 import { useUserLogin } from '@/hooks/useUserLogin';

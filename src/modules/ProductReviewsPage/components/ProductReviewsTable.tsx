@@ -3,7 +3,7 @@ import { Icons } from '@/assets/icons';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { TablePagination } from '@/components/ui/table';
-import type { IMetaResponse } from '@/types';
+import type { IMetaResponse } from '@/types/header';
 import { format } from 'date-fns';
 import { Eye, Star } from 'lucide-react';
 import Image from 'next/image';

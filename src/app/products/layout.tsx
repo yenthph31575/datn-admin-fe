@@ -1,6 +1,6 @@
 'use client';
 import MainLayout from '@/layouts/MainLayout';
-import type { FCC } from '@/types';
+import type { FCC } from '@/types/header';
 import React from 'react';
 
 const layout: FCC = ({ children }) => {

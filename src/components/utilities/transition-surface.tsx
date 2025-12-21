@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 import React from 'react';
 
-import type { FCC } from '@/types';
+import type { FCC } from '@/types/header';
 
 interface Props {
   children: ReactNode;

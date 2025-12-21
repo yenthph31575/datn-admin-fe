@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 import { cn } from '@/libs/common';
-import type { TextProps } from '@/types';
+import type { TextProps } from '@/types/header';
 
 const H2 = forwardRef<any, TextProps>(({ className, children, ...props }, ref) => {
   return (

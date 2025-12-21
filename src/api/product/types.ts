@@ -1,5 +1,5 @@
+import type { IMetaResponse, ITableQuery } from '../../types/header';
 import type { ICategory } from '../category/types';
-import type { IMetaResponse, ITableQuery } from './../../types/index';
 
 export interface IProductQuery extends ITableQuery {}
 
