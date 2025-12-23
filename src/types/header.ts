@@ -1,44 +1,96 @@
-import type { FC, HTMLAttributes, PropsWithChildren, SVGProps } from "react";
+import type {
+  FC,
+  HTMLAttributes,
+  PropsWithChildren,
+  SVGProps,
+} from "react";
 
-/* ---------- Common ---------- */
-export type FCC<P = unknown> = FC<PropsWithChildren<P>>;
+/* =====================================================
+ * COMMON TYPES
+ * ===================================================== */
 
+/**
+ * FC có sẵn children
+ */
+export type FCC<P = Record<string, unknown>> = FC<PropsWithChildren<P>>;
+
+/**
+ * Props dùng chung cho Icon SVG
+ */
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
+  color?: string;
 };
 
-/* ---------- Error ---------- */
+
+/* =====================================================
+ * ERROR / API ERROR
+ * ===================================================== */
+
+/**
+ * Cấu trúc lỗi trả về từ API
+ */
 export interface ErrorMutate {
   code: number;
-  error_code?: string;
+  errorCode?: string;
   message: string | string[];
-  dynamic_data?: Record<string, unknown>;
+  dynamicData?: Record<string, unknown>;
 }
 
-/* ---------- UI ---------- */
-export interface TextProps extends HTMLAttributes<HTMLHeadingElement> {}
 
-/* ---------- Table / Query ---------- */
+/* =====================================================
+ * UI
+ * ===================================================== */
+
+/**
+ * Props cho component Text / Heading
+ */
+export interface TextProps
+  extends HTMLAttributes<HTMLHeadingElement> {
+  variant?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  color?: string;
+}
+
+
+/* =====================================================
+ * TABLE / QUERY
+ * ===================================================== */
+
 export interface ITableQuery {
   page: number;
   limit: number;
   sortKey?: string;
-  sortValue?: "asc" | "desc";
+  sortOrder?: "asc" | "desc";
   search?: string;
 }
 
-/* ---------- Pagination ---------- */
+
+/* =====================================================
+ * API META RESPONSE (DATA TỪ BACKEND)
+ * ===================================================== */
+
+/**
+ * Meta trả về từ API
+ * ❌ KHÔNG có totalPages
+ */
+export interface IMetaResponse {
+  page: number;
+  limit: number;
+  total: number;
+}
+
+
+/* =====================================================
+ * PAGINATION (DATA DÙNG CHO UI)
+ * ===================================================== */
+
+/**
+ * Phân trang hiển thị UI
+ * ✅ totalPages được tính ở frontend
+ */
 export interface IPagination {
   page: number;
   limit: number;
-  total_page: number;
-  total_item: number;
-  current_page: number;
-}
-
-export interface IMetaResponse {
-  total: number;
-  page: number;
-  limit: number;
+  totalItems: number;
   totalPages: number;
 }

@@ -5,7 +5,7 @@
 //   total_item: number;
 // }
 
-import type { IPagination } from './header';
+import type { IPagination } from './loginid';
 
 export interface IAxiosResponse<T> {
   data: T;

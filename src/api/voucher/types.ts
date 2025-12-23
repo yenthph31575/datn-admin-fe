@@ -1,4 +1,4 @@
-import type { IMetaResponse } from '@/types/header';
+import type { IMetaResponse } from '@/types/loginid';
 
 export interface IVoucher {
   _id: string;

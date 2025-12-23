@@ -1,4 +1,4 @@
-import type { IMetaResponse, ITableQuery } from '../../types/header';
+import type { IMetaResponse, ITableQuery } from '../../types/loginid';
 
 export const OrderStatus = {
   TO_PAY: 'TO_PAY',

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 import { cn } from '@/libs/common';
-import type { TextProps } from '@/types/header';
+import type { TextProps } from '@/types/loginid';
 
 const TextContent = forwardRef<HTMLParagraphElement, TextProps>(({ className, children, ...props }, ref) => {
   return (

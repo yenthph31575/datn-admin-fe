@@ -6,7 +6,7 @@ import * as React from 'react';
 import { Icons } from '@/assets/icons';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/libs/common';
-import type { FCC } from '@/types/header';
+import type { FCC } from '@/types/loginid';
 import { HStack } from '../utilities';
 
 const AlertDialog = AlertDialogPrimitive.Root;

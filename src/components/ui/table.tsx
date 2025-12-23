@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Icons } from '@/assets/icons';
 import { cn } from '@/libs/common';
-import type { IMetaResponse } from '@/types/header';
+import type { IMetaResponse } from '@/types/loginid';
 import { ChevronDown } from 'lucide-react';
 import { HStack, Show, VStack } from '../utilities';
 import Pagination from './pagination';
