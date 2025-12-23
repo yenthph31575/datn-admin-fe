@@ -30,18 +30,19 @@ export const useCartStore = create<CartState>((set, get) => ({
   /* ================= ADD ITEM ================= */
   addItem: (item) =>
     set((state) => {
-      const existedItem = state.items.find((i) => i.id === item.id);
+      const index = state.items.findIndex((i) => i.id === item.id);
 
-      if (existedItem) {
-        return {
-          items: state.items.map((i) =>
-            i.id === item.id
-              ? { ...i, quantity: i.quantity + 1 }
-              : i
-          ),
+      // Đã tồn tại → +1
+      if (index !== -1) {
+        const newItems = [...state.items];
+        newItems[index] = {
+          ...newItems[index],
+          quantity: newItems[index].quantity + 1,
         };
+        return { items: newItems };
       }
 
+      // Chưa tồn tại → thêm mới
       return {
         items: [...state.items, { ...item, quantity: 1 }],
       };
@@ -53,7 +54,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       items: state.items
         .map((i) =>
           i.id === id
-            ? { ...i, quantity: Math.max(0, i.quantity + delta) }
+            ? { ...i, quantity: i.quantity + delta }
             : i
         )
         .filter((i) => i.quantity > 0),
