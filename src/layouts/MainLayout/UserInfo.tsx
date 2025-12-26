@@ -45,7 +45,7 @@ const UserInfo = () => {
         <PopoverTrigger asChild>
           <Button>
             <HStack spacing={12}>
-              <Image src={user?.avatar || '/images/no-image.svg'} alt="Avatar" width={56} height={56} className="h-7 w-7 rounded-full" />
+              <Image src={user?.avatar || '/images/no-image.svg'} alt="Ảnh đại diện" width={56} height={56} className="h-7 w-7 rounded-full" />
               <span>{user?.username || '--'}</span>
 
               <Icons.chevronDown />
@@ -56,7 +56,7 @@ const UserInfo = () => {
         <PopoverContent className="flex flex-col gap-6 p-3">
           <VStack spacing={16}>
             <HStack spacing={20}>
-              <Image src={user?.avatar || '/images/no-image.svg'} alt="Avatar" width={40} height={40} className="h-10 w-10 rounded-full" />
+              <Image src={user?.avatar || '/images/no-image.svg'} alt="Ảnh đại diện" width={40} height={40} className="h-10 w-10 rounded-full" />
 
               <VStack className=" text-base">
                 <span className="">{user?.username || '--'}</span>
@@ -66,7 +66,7 @@ const UserInfo = () => {
 
           <Button className="flex w-full items-center gap-2" onClick={handleLogout}>
             <Icons.logout />
-            Log Out
+            Đăng xuất
           </Button>
         </PopoverContent>
       </Popover>
