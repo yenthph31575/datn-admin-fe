@@ -70,7 +70,7 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
             },
             className
           )}
-          placeholder={placeholder ?? 'Search value...'}
+          placeholder={placeholder ?? 'Tìm kiếm...'}
           onKeyDown={handleKeyPress}
           rightIcon={
             valueSearch &&
