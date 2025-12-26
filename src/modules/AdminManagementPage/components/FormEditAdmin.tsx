@@ -49,7 +49,7 @@ const FormEditAdmin = ({ refetch, _id }: Props) => {
       { formData: { ...formData, password: (formData.password ? formData.password : undefined) as any }, id: String(_id) },
       {
         onSuccess: () => {
-          toast.success('Update the admin successfully!');
+          toast.success('Cập nhật admin thành công!');
           setIsOpenModal(false);
           refetch();
         },
@@ -78,18 +78,18 @@ const FormEditAdmin = ({ refetch, _id }: Props) => {
             </span>
           </HStack>
 
-          <H3 className="mt-4">Edit Admin</H3>
+          <H3 className="mt-4">Sửa admin</H3>
 
           <div className="my-6">
             <FormWrapper form={form} onSubmit={handleSubmit}>
               <FormAdmin mode="edit" />
               <HStack pos="center" spacing={20} className="mt-10">
                 <Button size="sm" variant="outline" className="flex-1 px-6" onClick={() => setIsOpenModal(false)}>
-                  Cancel
+                  Hủy
                 </Button>
 
                 <Button type="submit" size="sm" className="flex-1 px-6" loading={isLoading} disabled={!form.formState.isDirty || isLoading}>
-                  Update
+                  Cập nhật
                 </Button>
               </HStack>
             </FormWrapper>
