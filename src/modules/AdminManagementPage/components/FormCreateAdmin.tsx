@@ -36,7 +36,7 @@ const FormCreateAdmin = ({ refetch }: Props) => {
   const handleSubmit: SubmitHandler<AdminSchema> = async (formData) => {
     mutate(formData, {
       onSuccess: () => {
-        toast.success('Create new admin successfully!');
+        toast.success('Tạo admin thành công!');
         setIsOpenModal(false);
         form.reset();
         refetch();
@@ -50,7 +50,7 @@ const FormCreateAdmin = ({ refetch }: Props) => {
       <DialogTrigger asChild>
         <Button>
           <Icons.plus />
-          Create
+          Tạo admin mới
         </Button>
       </DialogTrigger>
 
@@ -66,18 +66,18 @@ const FormCreateAdmin = ({ refetch }: Props) => {
             </span>
           </HStack>
 
-          <H3 className="mt-4">Create New Admin</H3>
+          <H3 className="mt-4">Tạo admin mới</H3>
 
           <div className="my-6">
             <FormWrapper form={form} onSubmit={handleSubmit}>
               <FormCategory />
               <HStack pos="center" spacing={20} className="mt-10">
                 <Button size="sm" variant="outline" className="flex-1 px-6" onClick={() => setIsOpenModal(false)}>
-                  Cancel
+                  Hủy
                 </Button>
 
                 <Button type="submit" size="sm" className="flex-1 px-6" loading={isLoading} disabled={!form.formState.isDirty || isLoading}>
-                  Create New
+                  Tạo admin mới
                 </Button>
               </HStack>
             </FormWrapper>
