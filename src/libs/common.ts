@@ -29,7 +29,7 @@ export const sleep = async (time: number) => {
  */
 export function formatCurrency(value: number | string | null | undefined, currency: string = 'VND'): string {
   if (value === undefined || value === null) return '-';
-  if (Number.isNaN(Number(value))) return `invalid amount: ${value}`;
+  if (Number.isNaN(Number(value))) return `Số tiền không hợp lệ: ${value}`;
 
   const amount = Number(value);
 
@@ -69,7 +69,7 @@ export function FormatNum(
   }
 ): string {
   if (value === undefined || value === null) return '-';
-  if (Number.isNaN(value)) return `invalid number: ${value}`;
+  if (Number.isNaN(value)) return `Số không hợp lệ: ${value}`;
   return Number(value).toLocaleString(undefined, {
     maximumFractionDigits: params.maxFrac,
     minimumFractionDigits: params.minFrac,
