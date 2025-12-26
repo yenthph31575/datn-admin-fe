@@ -23,7 +23,7 @@ const ButtonDeleteBanner = ({ _id, refetch, className }: Props) => {
   const handleDelete = () => {
     mutate(_id, {
       onSuccess: () => {
-        toast.success('Delete banner successfully!');
+        toast.success('Xóa banner thành công!');
         setIsOpenModal(false);
         refetch();
       },
@@ -35,14 +35,15 @@ const ButtonDeleteBanner = ({ _id, refetch, className }: Props) => {
     <AlertDialogComponent
       isOpen={isOpenModal}
       setIsOpen={setIsOpenModal}
-      title="Are you sure you want to delete this banner?"
-      description="This action cannot be undone. This will permanently delete the banner from our servers."
+      title="Bạn có chắc chắn muốn xóa banner này không?"
+      description="Hành động này không thể hoàn tác. Nó sẽ xóa vĩnh viễn banner khỏi máy chủ của chúng tôi."
       onOk={handleDelete}
-      okText={<>Delete</>}
-      cancelText={<>Back</>}
+      okText={<>Xóa</>}
+      cancelText={<>Quay lại</>}
       loading={isLoading}
     >
-      <Button size="sm" className="h-8">
+      <Button size="sm" className="h-8"
+        onClick={() => setIsOpenModal(true)}>
         <Trash />
       </Button>
     </AlertDialogComponent>
