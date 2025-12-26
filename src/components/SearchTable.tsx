@@ -44,7 +44,7 @@ const SearchTable = React.forwardRef<SearchInputRef, Props>(({ listFilter, onSel
   return (
     <HStack spacing={0}>
       <FilterTable
-        listFilter={[{ label: 'All', value: 'all' }, ...(listFilter || [])]}
+        listFilter={[{ label: 'Tất cả', value: 'all' }, ...(listFilter || [])]}
         buttonClassName="h-9 text-xs rounded-tr-none rounded-br-none "
         isSearch
         iconClassName="ml-3 w-5"

@@ -12,7 +12,7 @@ const NoDataAvailable = ({ message }: Props) => {
       <span>
         <Icons.noData />
       </span>
-      <span className="font-semibold text-grey-500 text-sm">{message || 'No data available!'}</span>
+      <span className="font-semibold text-grey-500 text-sm">{message || 'Không có dữ liệu'}</span>
     </VStack>
   );
 };
