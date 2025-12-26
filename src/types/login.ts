@@ -1,4 +1,7 @@
+import type { StateCreator } from "zustand";
 import { create } from "zustand";
+
+/* ================= TYPES ================= */
 
 export interface CartItem {
   id: number;
@@ -8,10 +11,9 @@ export interface CartItem {
   image?: string;
 }
 
-// Khi add không cần quantity
-type AddItemPayload = Omit<CartItem, "quantity">;
+export type AddItemPayload = Omit<CartItem, "quantity">;
 
-interface CartState {
+export interface CartState {
   items: CartItem[];
 
   addItem: (item: AddItemPayload) => void;
@@ -25,10 +27,12 @@ interface CartState {
   totalPrice: () => number;
 }
 
-export const useCartStore = create<CartState>((set, get) => ({
+/* ================= STORE ================= */
+
+const cartStore: StateCreator<CartState> = (set, get) => ({
   items: [],
 
-  /* ================= ADD ITEM ================= */
+  /* ADD ITEM */
   addItem: (item) =>
     set((state) => {
       const existing = state.items.find((i) => i.id === item.id);
@@ -48,7 +52,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       };
     }),
 
-  /* ================= UPDATE QUANTITY (+ / -) ================= */
+  /* UPDATE (+ / -) */
   updateQuantity: (id, delta) =>
     set((state) => ({
       items: state.items
@@ -60,7 +64,7 @@ export const useCartStore = create<CartState>((set, get) => ({
         .filter((i) => i.quantity > 0),
     })),
 
-  /* ================= SET QUANTITY (INPUT) ================= */
+  /* SET QUANTITY */
   setQuantity: (id, quantity) =>
     set((state) => {
       const q = Math.floor(quantity);
@@ -73,23 +77,21 @@ export const useCartStore = create<CartState>((set, get) => ({
 
       return {
         items: state.items.map((i) =>
-          i.id === id
-            ? { ...i, quantity: q }
-            : i
+          i.id === id ? { ...i, quantity: q } : i
         ),
       };
     }),
 
-  /* ================= REMOVE ITEM ================= */
+  /* REMOVE */
   removeItem: (id) =>
     set((state) => ({
       items: state.items.filter((i) => i.id !== id),
     })),
 
-  /* ================= CLEAR CART ================= */
+  /* CLEAR */
   clearCart: () => set({ items: [] }),
 
-  /* ================= TOTAL ================= */
+  /* TOTALS */
   totalQuantity: () =>
     get().items.reduce((sum, i) => sum + i.quantity, 0),
 
@@ -98,4 +100,8 @@ export const useCartStore = create<CartState>((set, get) => ({
       (sum, i) => sum + i.price * i.quantity,
       0
     ),
-}));
+});
+
+/* ================= EXPORT ================= */
+
+export const useCartStore = create<CartState>(cartStore);
