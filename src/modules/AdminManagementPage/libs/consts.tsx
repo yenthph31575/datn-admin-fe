@@ -7,7 +7,7 @@ import FormEditCategory from '../components/FormEditAdmin';
 export const COLUMNS = (refetch: any): ITableColumn[] => [
   { title: 'ID', key: '_id', align: 'left', className: 'w-[250px]' },
   {
-    title: 'Username',
+    title: 'Tên đăng nhập',
     key: 'username',
     align: 'left',
   },
@@ -17,7 +17,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     align: 'left',
   },
   {
-    title: 'Avatar',
+    title: 'Ảnh đại diện',
     key: 'updated_by',
     align: 'center',
     getCell: ({ row }) => (
@@ -27,7 +27,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     ),
   },
   {
-    title: 'Role',
+    title: 'Vai trò',
     key: 'role',
     align: 'left',
   },
