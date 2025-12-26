@@ -49,7 +49,7 @@ const Pagination = (props: Props) => {
         disabled={currentPage === 1}
       >
         <ChevronLeftIcon size={18} />
-        Previous
+        Trang trước
       </Button>
       {paginationRange.map((pageNumber, i) => {
         if (pageNumber === DOTS) {
@@ -81,7 +81,7 @@ const Pagination = (props: Props) => {
         onClick={onNext}
         disabled={currentPage === lastPage}
       >
-        Next
+        Trang sau
         <ChevronRightIcon size={18} />
       </Button>
     </div>

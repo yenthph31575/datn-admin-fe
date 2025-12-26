@@ -13,16 +13,16 @@ const FormAdmin = ({ mode }: any) => {
       <HStack pos="center" className="overflow-hidden">
         <UploadAvatarField control={form.control} name="avatar" />
       </HStack>
-      <TextField required control={form.control} name="username" label="Username" className="h-12" fullWidth />
+      <TextField required control={form.control} name="username" label="Tên đăng nhập" className="h-12" fullWidth />
       <TextField required control={form.control} name="email" label="Email" className="h-12" fullWidth />
 
-      <TextField required={mode !== 'edit'} control={form.control} name="password" label="Password" className="h-12" fullWidth />
+      <TextField required={mode !== 'edit'} control={form.control} name="password" label="Mật khẩu" className="h-12" fullWidth />
       <SelectCustomField
-        data={[{ label: 'Admin', value: 'ADMIN' }]}
+        data={[{ label: 'Quản trị viên', value: 'ADMIN' }]}
         required
         control={form.control}
         name="role"
-        label="Role"
+        label="Vai trò"
         className="h-12"
         fullWidth
       />

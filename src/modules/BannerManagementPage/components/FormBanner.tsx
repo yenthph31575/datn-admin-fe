@@ -17,14 +17,14 @@ const FormBanner = () => {
 
   return (
     <VStack spacing={16}>
-      <TextField required control={form.control} name="title" label="Title" className="h-11" fullWidth />
-      <TextField control={form.control} name="subtitle" label="Subtitle" className="h-11" fullWidth />
+      <TextField required control={form.control} name="title" label="Tiêu đề" className="h-11" fullWidth />
+      <TextField control={form.control} name="subtitle" label="Phụ đề" className="h-11" fullWidth />
       <TextField control={form.control} name="link" label="Link URL" className="h-11" fullWidth />
 
       <SelectCustomField
         required
         name="type"
-        label="Banner Type"
+        label="Loại banner"
         data={bannerTypeOptions}
         className="h-11"
         fullWidth
@@ -35,7 +35,7 @@ const FormBanner = () => {
         required
         control={form.control}
         name="order"
-        label="Display Order"
+        label="Thứ tự hiển thị"
         type="number"
         className="h-11"
         fullWidth
@@ -46,7 +46,7 @@ const FormBanner = () => {
         accept={['png', 'jpg', 'jpeg', 'svg', 'webp']}
         control={form.control}
         name="image"
-        label="Banner Image"
+        label="Ảnh banner"
         maxSize={5}
         className="h-12"
         fullWidth
@@ -59,7 +59,7 @@ const FormBanner = () => {
       <div className="flex items-center space-x-2">
         <Switch id="isActive" checked={form.watch('isActive')} onCheckedChange={(checked) => form.setValue('isActive', checked)} />
         <label htmlFor="isActive" className="font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-          Active
+          Hành động
         </label>
       </div>
     </VStack>
