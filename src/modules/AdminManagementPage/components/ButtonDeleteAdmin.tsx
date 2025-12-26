@@ -37,8 +37,8 @@ const ButtonDeleteAdmin = ({ _id, name, refetch }: Partial<ICategory> & { refetc
       setIsOpen={setIsDeleteConfirm}
       title="Xóa admin"
       variant="alert"
-      okText={<>Delete</>}
-      cancelText={<>Back</>}
+      okText={<>Xóa</>}
+      cancelText={<>Quay lại</>}
       loading={isLoading}
     >
       <Button
