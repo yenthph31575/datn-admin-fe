@@ -74,7 +74,7 @@ const Sidebar = () => {
 
       <Show when={openSideBar !== 'HIDDEN'}>
         <div className="scrollbar-transparent scrollbar-1 flex-1 overflow-y-auto">
-          <div className={cn('pb-4 font-medium text-sm text-white', !openSideBar ? 'text-center' : 'ml-7')}>MAIN</div>
+          <div className={cn('pb-4 font-medium text-sm text-white', !openSideBar ? 'text-center' : 'ml-7')}>Danh mục</div>
 
           <VStack className="mb-6" spacing={8}>
             {sidebars.map((sidebar, index) => {
