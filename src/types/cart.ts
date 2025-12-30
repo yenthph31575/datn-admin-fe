@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+/* ================= TYPES ================= */
 export interface CartItem {
   id: number;
   name: string;
@@ -21,20 +22,24 @@ interface CartState {
   updateQuantity: (id: number, delta: number) => void;
   setQuantity: (id: number, quantity: number) => void;
 
-  totalQuantity: number;
-  totalPrice: number;
+  totalQuantity: () => number;
+  totalPrice: () => number;
 }
 
+/* ================= HELPERS ================= */
+const clampQuantity = (value: number) =>
+  Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0;
+
+/* ================= STORE ================= */
 export const useCartStore = create<CartState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       items: [],
 
       /* ================= ADD ITEM ================= */
       addItem: (item) =>
         set((state) => {
           const existed = state.items.find((i) => i.id === item.id);
-
           if (existed) {
             return {
               items: state.items.map((i) =>
@@ -44,10 +49,7 @@ export const useCartStore = create<CartState>()(
               ),
             };
           }
-
-          return {
-            items: [...state.items, { ...item, quantity: 1 }],
-          };
+          return { items: [...state.items, { ...item, quantity: 1 }] };
         }),
 
       /* ================= UPDATE QUANTITY (+ / -) ================= */
@@ -56,7 +58,7 @@ export const useCartStore = create<CartState>()(
           items: state.items
             .map((i) =>
               i.id === id
-                ? { ...i, quantity: i.quantity + delta }
+                ? { ...i, quantity: clampQuantity(i.quantity + delta) }
                 : i,
             )
             .filter((i) => i.quantity > 0),
@@ -64,19 +66,17 @@ export const useCartStore = create<CartState>()(
 
       /* ================= SET QUANTITY ================= */
       setQuantity: (id, quantity) =>
-        set((state) => ({
-          items:
-            quantity <= 0
-              ? state.items.filter((i) => i.id !== id)
-              : state.items.map((i) =>
-                  i.id === id
-                    ? {
-                        ...i,
-                        quantity: Math.max(1, Math.floor(quantity)),
-                      }
-                    : i,
-                ),
-        })),
+        set((state) => {
+          const q = clampQuantity(quantity);
+          return {
+            items:
+              q === 0
+                ? state.items.filter((i) => i.id !== id)
+                : state.items.map((i) =>
+                    i.id === id ? { ...i, quantity: q } : i,
+                  ),
+          };
+        }),
 
       /* ================= REMOVE ITEM ================= */
       removeItem: (id) =>
@@ -88,19 +88,9 @@ export const useCartStore = create<CartState>()(
       clearCart: () => set({ items: [] }),
 
       /* ================= TOTALS ================= */
-      get totalQuantity() {
-        return this.items.reduce(
-          (sum, item) => sum + item.quantity,
-          0,
-        );
-      },
-
-      get totalPrice() {
-        return this.items.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0,
-        );
-      },
+      totalQuantity: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
+      totalPrice: () =>
+        get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
     }),
     {
       name: 'cart-storage', // lưu vào localStorage

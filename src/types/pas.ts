@@ -10,7 +10,7 @@ export interface CartItem {
   image?: string;
 }
 
-export type AddItemPayload = Omit<CartItem, "quantity">;
+export type AddItemPayload = Omit<CartItem, "quantity"> & { quantity?: number };
 
 export interface CartState {
   items: CartItem[];
@@ -36,8 +36,7 @@ const clampQuantity = (value: number) =>
 export const useCartStore = create<CartState>((set, get) => ({
   items: [],
 
-  /* ADD ITEM */
-  addItem: (item) =>
+  addItem: ({ quantity = 1, ...item }) =>
     set((state) => {
       const found = state.items.find((i) => i.id === item.id);
 
@@ -45,63 +44,46 @@ export const useCartStore = create<CartState>((set, get) => ({
         return {
           items: state.items.map((i) =>
             i.id === item.id
-              ? { ...i, quantity: i.quantity + 1 }
+              ? { ...i, quantity: i.quantity + clampQuantity(quantity) }
               : i
           ),
         };
       }
 
       return {
-        items: [...state.items, { ...item, quantity: 1 }],
+        items: [...state.items, { ...item, quantity: clampQuantity(quantity) }],
       };
     }),
 
-  /* UPDATE (+ / -) */
   updateQuantity: (id, delta) =>
     set((state) => ({
       items: state.items
         .map((i) =>
-          i.id === id
-            ? { ...i, quantity: i.quantity + delta }
-            : i
+          i.id === id ? { ...i, quantity: clampQuantity(i.quantity + delta) } : i
         )
         .filter((i) => i.quantity > 0),
     })),
 
-  /* SET QUANTITY (INPUT) */
   setQuantity: (id, quantity) =>
     set((state) => {
       const q = clampQuantity(quantity);
-
-      if (q === 0) {
-        return {
-          items: state.items.filter((i) => i.id !== id),
-        };
-      }
-
       return {
-        items: state.items.map((i) =>
-          i.id === id ? { ...i, quantity: q } : i
-        ),
+        items: q === 0
+          ? state.items.filter((i) => i.id !== id)
+          : state.items.map((i) => (i.id === id ? { ...i, quantity: q } : i)),
       };
     }),
 
-  /* REMOVE */
   removeItem: (id) =>
     set((state) => ({
       items: state.items.filter((i) => i.id !== id),
     })),
 
-  /* CLEAR */
   clearCart: () => set({ items: [] }),
 
-  /* TOTALS */
   totalQuantity: () =>
     get().items.reduce((sum, i) => sum + i.quantity, 0),
 
   totalPrice: () =>
-    get().items.reduce(
-      (sum, i) => sum + i.price * i.quantity,
-      0
-    ),
+    get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
 }));
