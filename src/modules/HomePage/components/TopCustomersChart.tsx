@@ -79,7 +79,10 @@ const TopCustomersChart = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="totalSpent">Tổng chi tiêu</SelectItem>
-              <SelectItem value="orderCount">Số lượng đơn hàng</SelectItem>
+
+              <SelectItem value="orderCount">Tổng đơn hàng</SelectItem>
+=======
+            
             </SelectContent>
           </Select>
 
@@ -97,7 +100,9 @@ const TopCustomersChart = () => {
           </Select>
 
           <Link href={ROUTER.USER_MANAGEMENT} className="text-blue-500 text-sm hover:underline">
+
             Xem tất cả
+
           </Link>
         </div>
       </CardHeader>
@@ -150,15 +155,20 @@ const TopCustomersChart = () => {
 
                           <div className="text-sm">
                             <p>
-                              <span className="font-medium">Tổng chi tiêu:</span>{' '}
-                              {formatCurrency(customer.totalSpent * 1000000)}
+
+                              <span className="font-medium">Tổng chi tiêu:</span> {formatCurrency(customer.totalSpent * 1000000)}
+=======
+                      
                             </p>
                             <p>
                               <span className="font-medium">Số đơn hàng:</span> {customer.orderCount}
                             </p>
                             <p>
-                              <span className="font-medium">Đơn gần nhất:</span>{' '}
-                              {format(new Date(customer.lastOrderDate), 'dd MMM yyyy')}
+
+                              <span className="font-medium">Đơn hàng gần nhất:</span> {format(new Date(customer.lastOrderDate), 'dd MMM yyyy')}
+=======
+                        
+
                             </p>
                           </div>
                         </div>
@@ -171,6 +181,7 @@ const TopCustomersChart = () => {
                 <Legend />
 
                 {metric === 'totalSpent' ? (
+
                   <Bar
                     dataKey="totalSpent"
                     fill="#8884d8"
@@ -186,13 +197,16 @@ const TopCustomersChart = () => {
                     radius={[0, 4, 4, 0]}
                     barSize={32}
                   />
+
                 )}
               </BarChart>
             </ResponsiveContainer>
 
             {/* Danh sách khách hàng */}
             <div className="mt-6">
+
               <h3 className="mb-2 font-medium text-sm">Thông tin khách hàng</h3>
+
 
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {chartData.map((customer) => (
@@ -212,7 +226,9 @@ const TopCustomersChart = () => {
                     <div>
                       <p className="line-clamp-1 font-medium">{customer.displayName}</p>
                       <p className="text-gray-500 text-xs">{formatCurrency(customer.totalSpent * 1000000)}</p>
-                      <p className="text-gray-500 text-xs">{customer.orderCount} đơn hàng</p>
+
+                      <p className="text-gray-500 text-xs">{customer.orderCount} Đơn hàng</p>
+
                     </div>
                   </VStack>
                 ))}

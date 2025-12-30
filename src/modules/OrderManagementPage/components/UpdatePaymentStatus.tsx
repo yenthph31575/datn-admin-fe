@@ -36,7 +36,7 @@ const UpdatePaymentStatus = ({ orderId, currentStatus, refetch }: UpdatePaymentS
       { id: orderId, status: selectedStatus },
       {
         onSuccess: () => {
-          toast.success('Payment status updated successfully');
+          toast.success('Cập nhật trạng thái thanh toán thành công');
           setIsOpen(false);
           refetch();
         },
@@ -54,7 +54,7 @@ const UpdatePaymentStatus = ({ orderId, currentStatus, refetch }: UpdatePaymentS
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Update Payment Status</DialogTitle>
+            <DialogTitle>Cập nhật trạng thái thanh toán</DialogTitle>
           </DialogHeader>
 
           <VStack spacing={16} className="py-4">
@@ -70,9 +70,8 @@ const UpdatePaymentStatus = ({ orderId, currentStatus, refetch }: UpdatePaymentS
                     <RadioGroupItem value={value} id={`payment-${value}`} disabled={isDisabled} />
                     <label
                       htmlFor={`payment-${value}`}
-                      className={`font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${
-                        value === selectedStatus ? 'text-primary' : ''
-                      } ${isDisabled ? 'text-gray-400' : ''}`}
+                      className={`font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${value === selectedStatus ? 'text-primary' : ''
+                        } ${isDisabled ? 'text-gray-400' : ''}`}
                     >
                       {PAYMENT_STATUS_OPTIONS.find((option) => option.value === value)?.label || value}
                       {isDisabled && value !== currentStatus && ' (invalid transition)'}
@@ -85,7 +84,7 @@ const UpdatePaymentStatus = ({ orderId, currentStatus, refetch }: UpdatePaymentS
 
           <HStack pos="apart" className="mt-4">
             <Button variant="outline" onClick={() => setIsOpen(false)}>
-              Cancel
+              Hủy
             </Button>
             <Button onClick={handleUpdateStatus} disabled={isLoading || selectedStatus === currentStatus}>
               {isLoading ? <Icons.spinner className="h-4 w-4 animate-spin" /> : 'Update Status'}

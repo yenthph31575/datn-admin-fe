@@ -114,9 +114,8 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
                     <RadioGroupItem value={value} id={`shipping-${value}`} disabled={isDisabled} />
                     <label
                       htmlFor={`shipping-${value}`}
-                      className={`font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${
-                        value === selectedStatus ? 'text-primary' : ''
-                      } ${isDisabled ? 'text-gray-400' : ''}`}
+                      className={`font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${value === selectedStatus ? 'text-primary' : ''
+                        } ${isDisabled ? 'text-gray-400' : ''}`}
                     >
                       {SHIPPING_STATUS_OPTIONS.find((option) => option.value === value)?.label || value}
                       {isDisabled && value !== currentStatus && ' (không hợp lệ)'}
@@ -172,7 +171,7 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
                 <Show when={isUploading}>
                   <div className="mt-2 flex items-center gap-2">
                     <Icons.spinner className="h-4 w-4 animate-spin" />
-                    <span className="text-gray-500 text-sm">Uploading image...</span>
+                    <span className="text-gray-500 text-sm">Tải ảnh lên...</span>
                   </div>
                 </Show>
               </div>

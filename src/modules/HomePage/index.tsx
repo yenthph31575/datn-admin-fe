@@ -10,6 +10,7 @@ import TopCustomersChart from './components/TopCustomersChart';
 import TopProducts from './components/TopProducts';
 import TopProductsChart from './components/TopProductsChart';
 
+
 const HomePage = () => {
   return (
     <Container>
@@ -31,5 +32,4 @@ const HomePage = () => {
     </Container>
   );
 };
-
 export default HomePage;

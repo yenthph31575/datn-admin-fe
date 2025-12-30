@@ -52,8 +52,7 @@ export const ORDER_STATUS_OPTIONS = [
   { value: OrderStatus.COMPLETED, label: 'Completed', color: 'bg-green-100 text-green-800' },
   { value: OrderStatus.CANCELED, label: 'Canceled', color: 'bg-red-100 text-red-800' },
   { value: OrderStatus.REFUND, label: 'Refund', color: 'bg-gray-100 text-gray-800' },
-  { value: OrderStatus.EXPIRED, label: 'Expired', color: 'bg-orange-100 text-orange-800' },
-];
+  { value: OrderStatus.EXPIRED, label: 'Expired', color: 'bg-orange-100 text-orange-800' },];
 
 export const SHIPPING_STATUS_OPTIONS = [
   { value: ShippingStatus.PENDING, label: 'Pending', color: 'bg-yellow-100 text-yellow-800' },
@@ -64,15 +63,15 @@ export const SHIPPING_STATUS_OPTIONS = [
 ];
 
 export const PAYMENT_STATUS_OPTIONS = [
-  { value: PaymentStatus.PENDING, label: 'Pending', color: 'bg-yellow-100 text-yellow-800' },
-  { value: PaymentStatus.COMPLETED, label: 'Completed', color: 'bg-green-100 text-green-800' },
-  { value: PaymentStatus.FAILED, label: 'Failed', color: 'bg-red-100 text-red-800' },
-  { value: PaymentStatus.REFUNDED, label: 'Refunded', color: 'bg-gray-100 text-gray-800' },
+  { value: PaymentStatus.PENDING, label: 'Chờ thanh toán', color: 'bg-yellow-100 text-yellow-800' },
+  { value: PaymentStatus.COMPLETED, label: 'Hoàn thành', color: 'bg-green-100 text-green-800' },
+  { value: PaymentStatus.FAILED, label: 'Thất bại', color: 'bg-red-100 text-red-800' },
+  { value: PaymentStatus.REFUNDED, label: 'Hoàn tiền', color: 'bg-gray-100 text-gray-800' },
 ];
 
 export const PAYMENT_METHOD_LABELS = {
-  ONLINE_PAYMENT: 'Online Payment',
-  CASH_ON_DELIVERY: 'Cash on Delivery',
+  ONLINE_PAYMENT: 'Thanh toán online',
+  CASH_ON_DELIVERY: 'Thanh toán khi nhận hàng',
 };
 
 export const getStatusBadge = (status: string) => {
@@ -97,7 +96,7 @@ export const formatDateTime = (dateString?: string) => {
 
 export const COLUMNS = (refetch: any): ITableColumn[] => [
   {
-    title: 'Order Code',
+    title: 'Mã đơn hàng',
     key: 'orderCode',
     align: 'left',
     className: 'w-[150px]',
@@ -114,7 +113,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     ),
   },
   {
-    title: 'Items',
+    title: 'Số lượng sản phẩm',
     key: 'items',
     align: 'center',
     getCell: ({ row }) => <div className="px-2 py-1 text-center">{row.items?.length || 0}</div>,
