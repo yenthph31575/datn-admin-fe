@@ -2,7 +2,7 @@ import { DollarSign, Package, ShoppingCart, Users } from 'lucide-react';
 
 export const statsData = [
   {
-    title: 'Total Revenue',
+    title: 'Tổng doanh thu',
     value: 54200,
     format: 'currency',
     change: 20.1,
@@ -11,7 +11,7 @@ export const statsData = [
     iconColor: 'text-primary-500',
   },
   {
-    title: 'Total Products',
+    title: 'Tổng sản phẩm',
     value: 1254,
     format: 'number',
     change: 12.4,
@@ -20,7 +20,7 @@ export const statsData = [
     iconColor: 'text-blue-500',
   },
   {
-    title: 'Total Orders',
+    title: 'Tổng đơn hàng',
     value: 573,
     format: 'number',
     change: 8.2,
@@ -29,7 +29,7 @@ export const statsData = [
     iconColor: 'text-green-500',
   },
   {
-    title: 'Total Customers',
+    title: 'Tổng khách hàng',
     value: 2834,
     format: 'number',
     change: -2.5,
@@ -40,38 +40,38 @@ export const statsData = [
 ];
 
 export const salesData = [
-  { name: 'Jan', total: 1200 },
-  { name: 'Feb', total: 1900 },
-  { name: 'Mar', total: 2400 },
-  { name: 'Apr', total: 1800 },
-  { name: 'May', total: 2800 },
-  { name: 'Jun', total: 3200 },
-  { name: 'Jul', total: 2600 },
-  { name: 'Aug', total: 3800 },
-  { name: 'Sep', total: 4200 },
-  { name: 'Oct', total: 3600 },
-  { name: 'Nov', total: 4800 },
-  { name: 'Dec', total: 5400 },
+  { name: 'Tháng 1', total: 1200 },
+  { name: 'Tháng 2', total: 1900 },
+  { name: 'Tháng 3', total: 2400 },
+  { name: 'Tháng 4', total: 1800 },
+  { name: 'Tháng 5', total: 2800 },
+  { name: 'Tháng 6', total: 3200 },
+  { name: 'Tháng 7', total: 2600 },
+  { name: 'Tháng 8', total: 3800 },
+  { name: 'Tháng 9', total: 4200 },
+  { name: 'Tháng 10', total: 3600 },
+  { name: 'Tháng 11', total: 4800 },
+  { name: 'Tháng 12', total: 5400 },
 ];
 
 export const productCategoryData = [
-  { name: 'Electronics', value: 35 },
-  { name: 'Clothing', value: 25 },
-  { name: 'Home & Kitchen', value: 20 },
-  { name: 'Books', value: 10 },
-  { name: 'Others', value: 10 },
+  { name: 'Điện tử', value: 35 },
+  { name: 'Thời trang', value: 25 },
+  { name: 'Nhà & Đời sống', value: 20 },
+  { name: 'Sách', value: 10 },
+  { name: 'Khác', value: 10 },
 ];
 
 export const CHART_COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
 
 export const weeklyOrdersData = [
-  { day: 'Mon', orders: 45 },
-  { day: 'Tue', orders: 52 },
-  { day: 'Wed', orders: 38 },
-  { day: 'Thu', orders: 65 },
-  { day: 'Fri', orders: 78 },
-  { day: 'Sat', orders: 90 },
-  { day: 'Sun', orders: 48 },
+  { day: 'Thứ 2', orders: 45 },
+  { day: 'Thứ 3', orders: 52 },
+  { day: 'Thứ 4', orders: 38 },
+  { day: 'Thứ 5', orders: 65 },
+  { day: 'Thứ 6', orders: 78 },
+  { day: 'Thứ 7', orders: 90 },
+  { day: 'Chủ nhật', orders: 48 },
 ];
 
 export const recentOrders = [
@@ -109,26 +109,26 @@ export const orderStatusColors = {
 
 // Monthly revenue data for the past year
 export const yearlyRevenueData = [
-  { month: 'Jan 2023', revenue: 32500 },
-  { month: 'Feb 2023', revenue: 36700 },
-  { month: 'Mar 2023', revenue: 42300 },
-  { month: 'Apr 2023', revenue: 38900 },
-  { month: 'May 2023', revenue: 44200 },
-  { month: 'Jun 2023', revenue: 48700 },
-  { month: 'Jul 2023', revenue: 52100 },
-  { month: 'Aug 2023', revenue: 49800 },
-  { month: 'Sep 2023', revenue: 53400 },
-  { month: 'Oct 2023', revenue: 58900 },
-  { month: 'Nov 2023', revenue: 62300 },
-  { month: 'Dec 2023', revenue: 67800 },
+  { month: 'Tháng 1 2023', revenue: 32500 },
+  { month: 'Tháng 2 2023', revenue: 36700 },
+  { month: 'Tháng 3 2023', revenue: 42300 },
+  { month: 'Tháng 4 2023', revenue: 38900 },
+  { month: 'Tháng 5 2023', revenue: 44200 },
+  { month: 'Tháng 6 2023', revenue: 48700 },
+  { month: 'Tháng 7 2023', revenue: 52100 },
+  { month: 'Tháng 8 2023', revenue: 49800 },
+  { month: 'Tháng 9 2023', revenue: 53400 },
+  { month: 'Tháng 10 2023', revenue: 58900 },
+  { month: 'Tháng 11 2023', revenue: 62300 },
+  { month: 'Tháng 12 2023', revenue: 67800 },
 ];
 
 // Traffic sources data
 export const trafficSourcesData = [
-  { source: 'Direct', sessions: 5840, percentage: 35 },
-  { source: 'Organic Search', sessions: 4200, percentage: 25 },
-  { source: 'Social Media', sessions: 3360, percentage: 20 },
-  { source: 'Referral', sessions: 1680, percentage: 10 },
+  { source: 'Trực tiếp', sessions: 5840, percentage: 35 },
+  { source: 'Tìm kiếm tự nhiên', sessions: 4200, percentage: 25 },
+  { source: 'Mạng xã hội', sessions: 3360, percentage: 20 },
+  { source: 'Giới thiệu', sessions: 1680, percentage: 10 },
   { source: 'Email', sessions: 1680, percentage: 10 },
 ];
 
@@ -143,17 +143,17 @@ export const customerDemographicsData = [
 
 // Product inventory status
 export const inventoryStatusData = [
-  { status: 'In Stock', count: 842, percentage: 67 },
-  { status: 'Low Stock', count: 253, percentage: 20 },
-  { status: 'Out of Stock', count: 159, percentage: 13 },
+  { status: 'Còn hàng', count: 842, percentage: 67 },
+  { status: 'Hết hàng', count: 253, percentage: 20 },
+  { status: 'Sắp hết hàng', count: 159, percentage: 13 },
 ];
 
 // Recent activities
 export const recentActivities = [
-  { id: 1, type: 'order', message: 'New order #12345 received', time: '5 minutes ago' },
-  { id: 2, type: 'product', message: 'Product "Smart Watch" is low on stock', time: '25 minutes ago' },
-  { id: 3, type: 'customer', message: 'New customer registration: Jane Smith', time: '1 hour ago' },
-  { id: 4, type: 'review', message: 'New 5-star review for "Wireless Headphones"', time: '2 hours ago' },
-  { id: 5, type: 'order', message: 'Order #12340 has been shipped', time: '3 hours ago' },
-  { id: 6, type: 'system', message: 'System update completed successfully', time: '5 hours ago' },
+  { id: 1, type: 'order', message: 'Đơn hàng mới #12345 đã được nhận', time: '5 phút trước' },
+  { id: 2, type: 'product', message: 'Sản phẩm "Smart Watch" sắp hết hàng', time: '25 phút trước' },
+  { id: 3, type: 'customer', message: 'Đăng ký khách hàng mới: Jane Smith', time: '1 giờ trước' },
+  { id: 4, type: 'review', message: 'Đánh giá 5 sao mới cho "Tai nghe không dây"', time: '2 giờ trước' },
+  { id: 5, type: 'order', message: 'Đơn hàng #12340 đã được giao', time: '3 giờ trước' },
+  { id: 6, type: 'system', message: 'Cập nhật hệ thống đã hoàn tất', time: '5 giờ trước' },
 ];
