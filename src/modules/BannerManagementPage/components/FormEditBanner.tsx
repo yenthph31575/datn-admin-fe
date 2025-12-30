@@ -43,7 +43,7 @@ const FormEditBanner = ({ refetch, _id }: Props) => {
       subtitle: '',
       image: '',
       link: '',
-      order: '0',
+      order: 0,
       isActive: true,
     },
     resolver: zodResolver(bannerSchema),
