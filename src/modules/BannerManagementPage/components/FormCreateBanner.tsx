@@ -33,7 +33,7 @@ const FormCreateBanner = ({ refetch }: Props) => {
       image: '',
       link: '',
       type: 'HOME_HERO',
-      order: '0',
+      order: 0,
       isActive: true,
     },
     resolver: zodResolver(bannerSchema),

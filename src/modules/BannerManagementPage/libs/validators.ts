@@ -11,9 +11,12 @@ export const bannerSchema = z.object({
   type: z.enum(BANNER_TYPES, {
     required_error: validationMessages.required(),
   }),
-  order: z.string().refine((val) => !isNaN(+val) && +val >= 0, {
-    message: 'Order must be a positive number',
-  }),
+  order: z.coerce
+    .number({
+      invalid_type_error: 'Thứ tự hiển thị phải là số',
+    })
+    .min(0, { message: 'Thứ tự hiển thị phải ≥ 0' }),
+
   isActive: z.boolean().default(true),
 });
 
