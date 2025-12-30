@@ -2,10 +2,12 @@ import { validationMessages } from '@/libs/validation.utility';
 import { z } from 'zod';
 
 export const authSchema = z.object({
-  identifier: z.string({ required_error: 'Tên đăng nhập không được để trống' }).nonempty(validationMessages.required('Tên đăng nhập')),
+
+  identifier: z.string({ required_error: 'Tên đăng nhập không được để trống' }).nonempty(validationMessages.required('Username')),
   password: z
     .string({ required_error: 'Mật khẩu là bắt buộc' })
-    .nonempty(validationMessages.required('Mật khẩu'))
+    .nonempty(validationMessages.required('Password'))
+
     .min(6, {
       message: 'Tên đăng nhập hoặc mật khẩu bạn nhập không đúng!',
     })

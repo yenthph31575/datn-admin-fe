@@ -3,7 +3,7 @@ import { Icons } from '@/assets/icons';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { TablePagination } from '@/components/ui/table';
-import type { IMetaResponse } from '@/types';
+import type { IMetaResponse } from '@/types/loginid';
 import { format } from 'date-fns';
 import { Eye, Star } from 'lucide-react';
 import Image from 'next/image';
@@ -52,9 +52,9 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
           <thead className="bg-gray-50 text-left text-gray-600">
             <tr>
               <th className="p-3">User</th>
-              <th className="p-3">Rating</th>
-              <th className="p-3">Comment</th>
-              <th className="p-3">Images</th>
+              <th className="p-3">Đánh giá</th>
+              <th className="p-3">Bình luận</th>
+              <th className="p-3">Hình ảnh</th>
               <th className="p-3">Trạng thái</th>
               <th className="p-3">Ngày tạo</th>
               <th className="p-3 text-right">Hành động</th>
