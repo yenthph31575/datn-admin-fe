@@ -56,7 +56,7 @@ const RevenueChart = () => {
             <DateRangePicker
               onUpdate={handleDateRangeChange}
               align="end"
-              locale="en-US"
+              locale="vi-VN"
               btnProps={{
                 variant: 'outline',
                 className: 'h-8',

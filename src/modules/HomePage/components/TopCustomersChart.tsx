@@ -76,8 +76,8 @@ const TopCustomersChart = () => {
               <SelectValue placeholder="Metric" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="totalSpent">Total Spent</SelectItem>
-              <SelectItem value="orderCount">Order Count</SelectItem>
+              <SelectItem value="totalSpent">Tổng chi tiêu</SelectItem>
+              <SelectItem value="orderCount">Tổng đơn hàng</SelectItem>
             </SelectContent>
           </Select>
 
@@ -94,14 +94,14 @@ const TopCustomersChart = () => {
           </Select>
 
           <Link href={ROUTER.USER_MANAGEMENT} className="text-blue-500 text-sm hover:underline">
-            View All
+            Xem tất cả khách hàng
           </Link>
         </div>
       </CardHeader>
       <CardContent>
         {!topCustomers?.length ? (
           <div className="py-8 text-center text-gray-500">
-            <p>No customers data available</p>
+            <p>Không có dữ liệu khách hàng</p>
           </div>
         ) : (
           <>
@@ -122,9 +122,9 @@ const TopCustomersChart = () => {
                 <Tooltip
                   formatter={(value, name) => {
                     if (name === 'totalSpent') {
-                      return [`${formatCurrency(Number(value) * 1000000)}`, 'Total Spent'];
+                      return [`${formatCurrency(Number(value) * 1000000)}`, 'Tổng chi tiêu'];
                     }
-                    return [value, 'Order Count'];
+                    return [value, 'Số đơn hàng'];
                   }}
                   content={({ active, payload, label }) => {
                     if (active && payload && payload.length) {
@@ -143,13 +143,13 @@ const TopCustomersChart = () => {
                           </div>
                           <div className="text-sm">
                             <p>
-                              <span className="font-medium">Total Spent:</span> {formatCurrency(customer.totalSpent * 1000000)}
+                              <span className="font-medium">Tổng chi tiêu:</span> {formatCurrency(customer.totalSpent * 1000000)}
                             </p>
                             <p>
-                              <span className="font-medium">Orders:</span> {customer.orderCount}
+                              <span className="font-medium">Số đơn hàng:</span> {customer.orderCount}
                             </p>
                             <p>
-                              <span className="font-medium">Last Order:</span> {format(new Date(customer.lastOrderDate), 'dd MMM yyyy')}
+                              <span className="font-medium">Đơn hàng gần nhất:</span> {format(new Date(customer.lastOrderDate), 'dd MMM yyyy')}
                             </p>
                           </div>
                         </div>
@@ -160,15 +160,15 @@ const TopCustomersChart = () => {
                 />
                 <Legend />
                 {metric === 'totalSpent' ? (
-                  <Bar dataKey="totalSpent" fill="#8884d8" name="Total Spent (Million)" radius={[0, 4, 4, 0]} barSize={32} />
+                  <Bar dataKey="totalSpent" fill="#8884d8" name="Tổng chi tiêu (Triệu)" radius={[0, 4, 4, 0]} barSize={32} />
                 ) : (
-                  <Bar dataKey="orderCount" fill="#82ca9d" name="Order Count" radius={[0, 4, 4, 0]} barSize={32} />
+                  <Bar dataKey="orderCount" fill="#82ca9d" name="Số đơn hàng" radius={[0, 4, 4, 0]} barSize={32} />
                 )}
               </BarChart>
             </ResponsiveContainer>
 
             <div className="mt-6">
-              <h3 className="mb-2 font-medium text-sm">Customer Details</h3>
+              <h3 className="mb-2 font-medium text-sm">Chi tiết khách hàng</h3>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {chartData.map((customer) => (
                   <VStack key={customer.id} className="rounded border p-2">
@@ -186,7 +186,7 @@ const TopCustomersChart = () => {
                     <div>
                       <p className="line-clamp-1 font-medium">{customer.displayName}</p>
                       <p className="text-gray-500 text-xs">{formatCurrency(customer.totalSpent * 1000000)}</p>
-                      <p className="text-gray-500 text-xs">{customer.orderCount} orders</p>
+                      <p className="text-gray-500 text-xs">{customer.orderCount} Đơn hàng</p>
                     </div>
                   </VStack>
                 ))}
