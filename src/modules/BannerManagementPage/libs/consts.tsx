@@ -7,17 +7,17 @@ import FormEditBanner from '../components/FormEditBanner';
 export const COLUMNS = (refetch: any): ITableColumn[] => [
   { title: 'ID', key: '_id', align: 'left', className: 'w-[200px]' },
   {
-    title: 'Title',
+    title: 'Tiêu đề',
     key: 'title',
     align: 'left',
   },
   {
-    title: 'Subtitle',
+    title: 'Phụ đề',
     key: 'subtitle',
     align: 'left',
   },
   {
-    title: 'Image',
+    title: 'Ảnh banner',
     key: 'image',
     align: 'center',
     getCell: ({ row }) => (
@@ -27,28 +27,28 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     ),
   },
   {
-    title: 'Type',
+    title: 'Loại banner',
     key: 'type',
     align: 'center',
     getCell: ({ row }) => <span className="rounded bg-blue-100 px-2 py-1 text-blue-800 text-xs">{row?.type?.replace('_', ' ')}</span>,
   },
   {
-    title: 'Order',
+    title: 'Thứ tự hiển thị',
     key: 'order',
     align: 'center',
   },
   {
-    title: 'Status',
+    title: 'Trạng thái',
     key: 'isActive',
     align: 'center',
     getCell: ({ row }) => (
       <span className={`rounded px-2 py-1 text-xs ${row?.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-        {row?.isActive ? 'Active' : 'Inactive'}
+        {row?.isActive ? 'Kích hoạt' : 'Không kích hoạt'}
       </span>
     ),
   },
   {
-    title: 'Hành độngs',
+    title: 'Hành động',
     key: 'actions',
     align: 'center',
     getCell: ({ row }) => (

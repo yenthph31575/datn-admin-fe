@@ -26,7 +26,7 @@ const OtherInformationTab = () => {
       const errors = form.formState.errors;
       const firstKey = Object.keys(errors)[0];
       const firstError = (errors as any)[firstKey];
-      toast.error(`The field '${firstKey}': ${firstError.message}` || 'Please fill in all required fields.');
+      toast.error(`Trường '${firstKey}': ${firstError.message}` || 'Please fill in all required fields.');
     }
   };
 
