@@ -182,9 +182,7 @@ const TopCustomersChart = () => {
 
                 {metric === 'totalSpent' ? (
 
-                  <Bar dataKey="totalSpent" fill="#8884d8" name="Tổng chi tiêu (Triệu)" radius={[0, 4, 4, 0]} barSize={32} />
-                ) : (
-               
+
 
                   <Bar
                     dataKey="totalSpent"
