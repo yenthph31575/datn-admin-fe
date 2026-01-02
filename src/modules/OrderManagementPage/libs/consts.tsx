@@ -48,18 +48,21 @@ export const defaultQuery: Partial<IOrderQuery> = {
 };
 
 export const ORDER_STATUS_OPTIONS = [
-  { value: OrderStatus.TO_PAY, label: 'To Pay', color: 'bg-yellow-100 text-yellow-800' },
-  { value: OrderStatus.COMPLETED, label: 'Completed', color: 'bg-green-100 text-green-800' },
-  { value: OrderStatus.CANCELED, label: 'Canceled', color: 'bg-red-100 text-red-800' },
-  { value: OrderStatus.REFUND, label: 'Refund', color: 'bg-gray-100 text-gray-800' },
-  { value: OrderStatus.EXPIRED, label: 'Expired', color: 'bg-orange-100 text-orange-800' },];
+
+  { value: OrderStatus.TO_PAY, label: 'Chờ thanh toán', color: 'bg-yellow-100 text-yellow-800' },
+  { value: OrderStatus.COMPLETED, label: 'Hoàn thành', color: 'bg-green-100 text-green-800' },
+  { value: OrderStatus.CANCELED, label: 'Đã hủy', color: 'bg-red-100 text-red-800' },
+  { value: OrderStatus.REFUND, label: 'Hoàn tiền', color: 'bg-gray-100 text-gray-800' },
+  { value: OrderStatus.EXPIRED, label: 'Hết hạn', color: 'bg-orange-100 text-orange-800' },
+];
+
 
 export const SHIPPING_STATUS_OPTIONS = [
-  { value: ShippingStatus.PENDING, label: 'Pending', color: 'bg-yellow-100 text-yellow-800' },
-  { value: ShippingStatus.PROCESSING, label: 'Processing', color: 'bg-blue-100 text-blue-800' },
-  { value: ShippingStatus.SHIPPED, label: 'Shipped', color: 'bg-indigo-100 text-indigo-800' },
-  { value: ShippingStatus.DELIVERED, label: 'Delivered', color: 'bg-green-100 text-green-800' },
-  { value: ShippingStatus.CANCELED, label: 'Canceled', color: 'bg-red-100 text-red-800' },
+  { value: ShippingStatus.PENDING, label: 'Chờ xử lý', color: 'bg-yellow-100 text-yellow-800' },
+  { value: ShippingStatus.PROCESSING, label: 'Đang xử lý', color: 'bg-blue-100 text-blue-800' },
+  { value: ShippingStatus.SHIPPED, label: 'Đang giao', color: 'bg-indigo-100 text-indigo-800' },
+  { value: ShippingStatus.DELIVERED, label: 'Đã giao hàng', color: 'bg-green-100 text-green-800' },
+  { value: ShippingStatus.CANCELED, label: 'Đã hủy', color: 'bg-red-100 text-red-800' },
 ];
 
 export const PAYMENT_STATUS_OPTIONS = [

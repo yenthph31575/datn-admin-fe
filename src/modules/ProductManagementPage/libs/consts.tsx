@@ -37,7 +37,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     align: 'center',
     getCell: ({ row }) => (
       <HStack pos="center">
-        <Image src={row?.images?.[0] || '/images/no-image.svg'} alt="image" width={80} height={80} className="rounded" />
+        <Image src={row?.images?.[0] || '/images/no-image.svg'} alt="Hình ảnh sản phẩm" width={80} height={80} className="rounded" />
       </HStack>
     ),
   },
@@ -92,7 +92,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     key: 'createdAt',
     align: 'left',
     getCell: ({ row }) => (
-      <div className="px-2 py-1 text-center text-xs">{row?.createdAt ? format(new Date(row?.createdAt), 'dd/MM/yyyy HH:mm') : 'Never'}</div>
+      <div className="px-2 py-1 text-center text-xs">{row?.createdAt ? format(new Date(row?.createdAt), 'dd/MM/yyyy HH:mm') : 'Chưa có'}</div>
     ),
   },
   {

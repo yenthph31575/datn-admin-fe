@@ -42,8 +42,8 @@ const ButtonDeleteProduct = ({ _id, name, refetch, totalSoldCount }: Partial<IPr
       setIsOpen={setIsDeleteConfirm}
       title="Xóa sản phẩm"
       variant="alert"
-      okText={<>Delete</>}
-      cancelText={<>Back</>}
+      okText={<>Xóa</>}
+      cancelText={<>Hủy</>}
       loading={isLoading}
     >
       <Button
