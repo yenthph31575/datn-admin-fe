@@ -4,7 +4,7 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import * as React from 'react';
 
 import { cn } from '@/libs/common';
-import type { FCC } from '@/types';
+import type { FCC } from '@/types/loginid';
 
 const TooltipProvider = TooltipPrimitive.Provider;
 

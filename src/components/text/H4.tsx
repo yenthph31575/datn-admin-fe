@@ -1,5 +1,5 @@
 import { cn } from '@/libs/common';
-import type { TextProps } from '@/types';
+import type { TextProps } from '@/types/loginid';
 
 function H4({ className, children, ...props }: TextProps) {
   return (

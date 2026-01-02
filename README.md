@@ -1,43 +1,42 @@
-## Intro <a name="intro"></a>
+## Giới thiệu <a name="intro"></a>
 
-This boilerplate is made for creating NextJS application easier and faster.
+Boilerplate này được tạo ra nhằm xây dựng ứng dụng NextJS nhanh hơn và đơn giản hơn.
 
-## Getting started: <a name="getting-started"></a>
+## Bắt đầu <a name="getting-started"></a>
 
-1. When you're using Windows run this:
+1. Nếu sử dụng Windows, hãy chạy các lệnh sau:
 
-   - `git config --global core.eol lf`
-   - `git config --global core.autocrlf input`
+- `git config --global core.eol lf`
 
-   #### This will change eol(End of line) to the same as on Linux/Mac, without this, you will have conflicts with your teammates with those systems and our bash script won't work
+- `git config --global core.autocrlf input`
 
-2. Clone this repository.
-3. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18)
-4. Run `pnpm install`
+Các lệnh này sẽ đồng bộ hoá end-of-line (EOL) giống với Linux/Mac. Nếu không thiết lập, có thể gặp conflict với đồng đội dùng hệ thống khác và một số bash script sẽ không chạy được.
+
+2. Clone repository này.
+
+3. Cài đặt pnpm toàn cục: `npm install -g pnpm` (yêu cầu Node >= 18).
+
+4. Chạy `pnpm install` để cài đặt dependencies.
 
 ---
 
-### Run the development server
-
+### Chạy server phát triển
 ```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Mở trình duyệt và truy cập [http://localhost:3000](http://localhost:3000) để xem kết quả.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Có thể bắt đầu chỉnh sửa giao diện bằng cách sửa file app/page.tsx. Trang sẽ tự động reload khi lưu thay đổi.
 
-## Learn More
+Dự án này sử dụng [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) để tối ưu hóa và tự động tải [Geist](https://vercel.com/font), một font mới đến từ Vercel.
 
-To learn more about Next.js, take a look at the following resources:
+## Tìm hiểu thêm
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Để tìm hiểu thêm về Next.js, tham khảo các tài nguyên sau:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js Documentation](https://nextjs.org/docs) - tìm hiểu tính năng & API.
+- [Learn Next.js](https://nextjs.org/learn) - khóa học tương tác.
 
----
-
-Made by [HoangDevNull](https://github.com/hoangdevnull)
+Có thể xem repo Next.js trên [the Next.js GitHub repository](https://github.com/vercel/next.js)

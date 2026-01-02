@@ -6,6 +6,7 @@ import { ArrowDown, ArrowUp, DollarSign, Package, ShoppingCart, Users } from 'lu
 import React, { useState } from 'react';
 
 const iconMap = {
+
   'Tổng doanh thu': DollarSign,
   'Tổng sản phẩm': Package,
   'Tổng đơn hàng': ShoppingCart,
@@ -17,6 +18,7 @@ const colorMap = {
   'Tổng sản phẩm': { iconBg: 'bg-blue-100', iconColor: 'text-blue-500' },
   'Tổng đơn hàng': { iconBg: 'bg-green-100', iconColor: 'text-green-500' },
   'Tổng khách hàng': { iconBg: 'bg-red-100', iconColor: 'text-red-500' },
+
 };
 
 const StatsCards = () => {

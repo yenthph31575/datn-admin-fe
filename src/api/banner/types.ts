@@ -1,5 +1,5 @@
-import type { IMetaResponse, ITableQuery } from './../../types/index';
 import { BANNER_TYPES } from '@/modules/BannerManagementPage/libs/validators';
+import type { IMetaResponse, ITableQuery } from '../../types/loginid';
 
 export interface IBannerQuery extends ITableQuery {
   type?: (typeof BANNER_TYPES)[number];

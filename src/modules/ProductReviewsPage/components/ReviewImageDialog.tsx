@@ -13,7 +13,7 @@ const ReviewImageDialog = ({ open, onOpenChange, imageUrl }: ReviewImageDialogPr
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Review Image</DialogTitle>
+          <DialogTitle>Hình ảnh</DialogTitle>
         </DialogHeader>
         <div className="relative h-[60vh] w-full">
           {imageUrl && <Image src={imageUrl} alt="Review image" fill className="object-contain" />}

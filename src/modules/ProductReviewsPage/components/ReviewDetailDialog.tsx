@@ -19,7 +19,7 @@ const ReviewDetailDialog = ({ open, onOpenChange, review, onShowImage }: ReviewD
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Review Details</DialogTitle>
+          <DialogTitle>Chi tiết đánh giá</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4">
@@ -45,13 +45,13 @@ const ReviewDetailDialog = ({ open, onOpenChange, review, onShowImage }: ReviewD
           </div>
 
           <div>
-            <p className="mb-1 font-medium text-gray-700 text-sm">Comment:</p>
+            <p className="mb-1 font-medium text-gray-700 text-sm">Bình luận:</p>
             <p className="whitespace-pre-wrap rounded-md bg-gray-50 p-3 text-sm">{review.comment}</p>
           </div>
 
           {review.images && review.images.length > 0 && (
             <div>
-              <p className="mb-2 font-medium text-gray-700 text-sm">Images:</p>
+              <p className="mb-2 font-medium text-gray-700 text-sm">Hình ảnh:</p>
               <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
                 {review.images.map((img, idx) => (
                   <div
@@ -68,19 +68,19 @@ const ReviewDetailDialog = ({ open, onOpenChange, review, onShowImage }: ReviewD
 
           <div className="grid grid-cols-3 gap-2">
             <div className="rounded-md bg-gray-50 p-3">
-              <p className="font-medium text-gray-500 text-xs">Status</p>
+              <p className="font-medium text-gray-500 text-xs">Trạng thái</p>
               <p className={`font-medium text-sm ${review.isActive ? 'text-green-600' : 'text-gray-500'}`}>
                 {review.isActive ? 'Active' : 'Inactive'}
               </p>
             </div>
             <div className="rounded-md bg-gray-50 p-3">
-              <p className="font-medium text-gray-500 text-xs">Verification</p>
+              <p className="font-medium text-gray-500 text-xs">Xác nhận</p>
               <p className={`font-medium text-sm ${review.isVerified ? 'text-blue-600' : 'text-gray-500'}`}>
                 {review.isVerified ? 'Verified' : 'Unverified'}
               </p>
             </div>
             <div className="rounded-md bg-gray-50 p-3">
-              <p className="font-medium text-gray-500 text-xs">Purchase Status</p>
+              <p className="font-medium text-gray-500 text-xs">Trạng thái mua sắm</p>
               <p className={`font-medium text-sm ${review.isPurchased ? 'text-purple-600' : 'text-gray-500'}`}>
                 {review.isPurchased ? 'Purchased' : 'Not Purchased'}
               </p>
