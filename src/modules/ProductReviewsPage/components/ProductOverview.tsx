@@ -33,7 +33,7 @@ const ProductOverview = ({ product }: ProductOverviewProps) => {
     },
     {
       label: 'Đánh giá',
-      value: product.averageRating ? `${product.averageRating.toFixed(1)}/5` : 'N/A',
+      value: product.averageRating ? `${product.averageRating.toFixed(1)}/5` : 'Chưa có',
       icon: <Star className="h-4 w-4 text-yellow-500" />,
       color: 'bg-yellow-50',
     },
@@ -99,19 +99,19 @@ const ProductOverview = ({ product }: ProductOverviewProps) => {
               <div className="grid grid-cols-2 gap-2">
                 <div className="flex items-center gap-2">
                   <span className={`h-2 w-2 rounded-full ${product.isActive ? 'bg-green-500' : 'bg-gray-300'}`}></span>
-                  <span className="text-sm">{product.isActive ? 'Active' : 'Inactive'}</span>
+                  <span className="text-sm">{product.isActive ? 'Đang bán' : 'Ngừng bán'}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={`h-2 w-2 rounded-full ${product.isFeatured ? 'bg-purple-500' : 'bg-gray-300'}`}></span>
-                  <span className="text-sm">{product.isFeatured ? 'Featured' : 'Not Featured'}</span>
+                  <span className="text-sm">{product.isFeatured ? 'Nổi bật' : 'Không nổi bật'}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={`h-2 w-2 rounded-full ${product.isOnSale ? 'bg-red-500' : 'bg-gray-300'}`}></span>
-                  <span className="text-sm">{product.isOnSale ? 'On Sale' : 'Regular Price'}</span>
+                  <span className="text-sm">{product.isOnSale ? 'Khuyến mãi' : 'Giá thường'}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={`h-2 w-2 rounded-full ${product.isNewArrival ? 'bg-blue-500' : 'bg-gray-300'}`}></span>
-                  <span className="text-sm">{product.isNewArrival ? 'New Arrival' : 'Standard'}</span>
+                  <span className="text-sm">{product.isNewArrival ? 'Hàng mới' : 'Thông thường'}</span>
                 </div>
               </div>
             </div>
