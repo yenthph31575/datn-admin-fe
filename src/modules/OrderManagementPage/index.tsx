@@ -15,7 +15,6 @@ import { COLUMNS, PAYMENT_METHOD_LABELS, PAYMENT_STATUS_OPTIONS, SHIPPING_STATUS
 
 const OrderManagementPage = () => {
   const [paramsQuery, setParamsQuery] = useState<Partial<IOrderQuery>>(defaultQuery);
-
   const { data, isFetching, refetch } = useOrdersQuery({
     variables: paramsQuery,
   });

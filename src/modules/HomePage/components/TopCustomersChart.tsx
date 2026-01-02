@@ -46,7 +46,7 @@ const TopCustomersChart = () => {
       name: customer.username || customer.name || customer.email.split('@')[0],
       displayName: customer.name || customer.username || customer.email.split('@')[0],
       email: customer.email,
-      totalSpent: customer.totalSpent / 1000000, // Chuyển đổi sang triệu
+      totalSpent: customer.totalSpent / 1000000, // Chuyển sang triệu
       orderCount: customer.orderCount,
       avatar: customer.avatar,
       lastOrderDate: customer.lastOrderDate,
@@ -56,7 +56,7 @@ const TopCustomersChart = () => {
     return (
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Top Khách Hàng </CardTitle>
+          <CardTitle>Top Khách Hàng</CardTitle>
           <Skeleton className="h-4 w-20" />
         </CardHeader>
         <CardContent>
@@ -71,33 +71,44 @@ const TopCustomersChart = () => {
       <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2">
         <CardTitle>Top Khách Hàng</CardTitle>
         <div className="flex flex-wrap items-center gap-2">
+
+          {/* Bộ lọc theo chỉ số */}
           <Select value={metric} onValueChange={(value) => setMetric(value as 'totalSpent' | 'orderCount')}>
             <SelectTrigger className="h-8 w-[120px]">
-              <SelectValue placeholder="Metric" />
+              <SelectValue placeholder="Chỉ số" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="totalSpent">Tổng chi tiêu</SelectItem>
+
               <SelectItem value="orderCount">Tổng đơn hàng</SelectItem>
+
+
             </SelectContent>
           </Select>
 
+          {/* Bộ lọc theo thời gian */}
           <Select value={period} onValueChange={(value) => setPeriod(value as 'day' | 'week' | 'month' | 'year')}>
             <SelectTrigger className="h-8 w-[120px]">
-              <SelectValue placeholder="Period" />
+              <SelectValue placeholder="Thời gian" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="day">Hôm nay</SelectItem>
               <SelectItem value="week">Tuần này</SelectItem>
               <SelectItem value="month">Tháng này</SelectItem>
-              <SelectItem value="year">Năm này</SelectItem>
+              <SelectItem value="year">Năm nay</SelectItem>
             </SelectContent>
           </Select>
 
           <Link href={ROUTER.USER_MANAGEMENT} className="text-blue-500 text-sm hover:underline">
-            Xem tất cả khách hàng
+
+
+            Xem tất cả
+
+
           </Link>
         </div>
       </CardHeader>
+
       <CardContent>
         {!topCustomers?.length ? (
           <div className="py-8 text-center text-gray-500">
@@ -105,20 +116,22 @@ const TopCustomersChart = () => {
           </div>
         ) : (
           <>
+            {/* Biểu đồ */}
             <ResponsiveContainer width="100%" height={350}>
               <BarChart
                 data={chartData}
                 layout="vertical"
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 80,
-                  bottom: 5,
-                }}
+                margin={{ top: 5, right: 30, left: 80, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis type="number" fontSize={10} tickFormatter={(value) => formatCurrency(value * 1000000)} />
-                <YAxis type="category" fontSize={10} dataKey="name" tick={{ fontSize: 12 }} width={80} />
+                <XAxis
+                  type="number"
+                  fontSize={10}
+                  tickFormatter={(value) => formatCurrency(value * 1000000)}
+                />
+                <YAxis type="category" dataKey="name" tick={{ fontSize: 12 }} width={80} />
+
+                {/* Tooltip */}
                 <Tooltip
                   formatter={(value, name) => {
                     if (name === 'totalSpent') {
@@ -126,7 +139,7 @@ const TopCustomersChart = () => {
                     }
                     return [value, 'Số đơn hàng'];
                   }}
-                  content={({ active, payload, label }) => {
+                  content={({ active, payload }) => {
                     if (active && payload && payload.length) {
                       const customer = payload[0].payload;
                       return (
@@ -141,15 +154,21 @@ const TopCustomersChart = () => {
                               <p className="text-gray-500 text-xs">{customer.email}</p>
                             </div>
                           </div>
+
                           <div className="text-sm">
                             <p>
+
+
                               <span className="font-medium">Tổng chi tiêu:</span> {formatCurrency(customer.totalSpent * 1000000)}
+
                             </p>
                             <p>
                               <span className="font-medium">Số đơn hàng:</span> {customer.orderCount}
                             </p>
                             <p>
+
                               <span className="font-medium">Đơn hàng gần nhất:</span> {format(new Date(customer.lastOrderDate), 'dd MMM yyyy')}
+
                             </p>
                           </div>
                         </div>
@@ -158,17 +177,43 @@ const TopCustomersChart = () => {
                     return null;
                   }}
                 />
+
                 <Legend />
+
                 {metric === 'totalSpent' ? (
+
                   <Bar dataKey="totalSpent" fill="#8884d8" name="Tổng chi tiêu (Triệu)" radius={[0, 4, 4, 0]} barSize={32} />
                 ) : (
-                  <Bar dataKey="orderCount" fill="#82ca9d" name="Số đơn hàng" radius={[0, 4, 4, 0]} barSize={32} />
+               
+
+                  <Bar
+                    dataKey="totalSpent"
+                    fill="#8884d8"
+                    name="Tổng chi tiêu (Triệu)"
+                    radius={[0, 4, 4, 0]}
+                    barSize={32}
+                  />
+                ) : (
+                  <Bar
+                    dataKey="orderCount"
+                    fill="#82ca9d"
+                    name="Số lượng đơn hàng"
+                    radius={[0, 4, 4, 0]}
+                    barSize={32}
+                  />
+
+
                 )}
               </BarChart>
             </ResponsiveContainer>
 
+            {/* Danh sách khách hàng */}
             <div className="mt-6">
-              <h3 className="mb-2 font-medium text-sm">Chi tiết khách hàng</h3>
+
+
+              <h3 className="mb-2 font-medium text-sm">Thông tin khách hàng</h3>
+
+
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {chartData.map((customer) => (
                   <VStack key={customer.id} className="rounded border p-2">
@@ -183,10 +228,15 @@ const TopCustomersChart = () => {
                         <p className="text-gray-500 text-xs">{customer.email}</p>
                       </VStack>
                     </HStack>
+
                     <div>
                       <p className="line-clamp-1 font-medium">{customer.displayName}</p>
                       <p className="text-gray-500 text-xs">{formatCurrency(customer.totalSpent * 1000000)}</p>
+
+
                       <p className="text-gray-500 text-xs">{customer.orderCount} Đơn hàng</p>
+
+
                     </div>
                   </VStack>
                 ))}

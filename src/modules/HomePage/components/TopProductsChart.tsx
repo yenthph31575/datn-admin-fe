@@ -46,7 +46,10 @@ const TopProductsChart = () => {
         <div className="flex flex-wrap items-center gap-2">
           <Select value={metric} onValueChange={(value) => setMetric(value as 'sales' | 'revenue')}>
             <SelectTrigger className="h-8 w-[120px]">
+
               <SelectValue placeholder="Chỉ số" />
+
+
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="sales">Đã bán</SelectItem>
@@ -82,7 +85,11 @@ const TopProductsChart = () => {
               <Tooltip
                 formatter={(value, name) => {
                   if (name === 'revenue') {
+
+
                     return [`${formatCurrency(Number(value))}`, 'Doanh thu'];
+
+
                   }
                   return [formatNumber(value as any), 'Đã bán'];
                 }}
@@ -97,7 +104,9 @@ const TopProductsChart = () => {
               {metric === 'sales' ? (
                 <Bar dataKey="sales" fill="#82ca9d" name="Đã bán" radius={[0, 4, 4, 0]} barSize={32} />
               ) : (
+
                 <Bar dataKey="revenue" fill="#8884d8" name="Doanh thu (Triệu)" radius={[0, 4, 4, 0]} barSize={32} />
+
               )}
             </BarChart>
           </ResponsiveContainer>

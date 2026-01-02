@@ -1,4 +1,4 @@
-import type { IMetaResponse, ITableQuery } from './../../types/index';
+import type { IMetaResponse, ITableQuery } from '../../types/loginid';
 
 export interface IBrandQuery extends ITableQuery {}
 

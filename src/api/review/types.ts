@@ -1,4 +1,4 @@
-import type { IMetaResponse } from '@/types';
+import type { IMetaResponse } from '@/types/loginid';
 
 export interface IReview {
   _id: string;
