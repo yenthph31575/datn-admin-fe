@@ -21,9 +21,6 @@ interface CartState {
 
   updateQuantity: (id: number, delta: number) => void;
   setQuantity: (id: number, quantity: number) => void;
-
-  totalQuantity: number;
-  totalPrice: number;
 }
 
 /* ================= HELPERS ================= */
@@ -33,7 +30,7 @@ const clamp = (v: number, min = 0) =>
 /* ================= STORE ================= */
 export const useCartStore = create<CartState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       items: [],
 
       /* ===== ADD ITEM ===== */
@@ -90,26 +87,11 @@ export const useCartStore = create<CartState>()(
 
       /* ===== CLEAR ===== */
       clearCart: () => set({ items: [] }),
-
-      /* ===== TOTALS (derived state) ===== */
-      totalQuantity: 0,
-      totalPrice: 0,
     }),
     {
       name: 'cart-storage',
       version: 1,
       partialize: (state) => ({ items: state.items }),
-      onRehydrateStorage: () => (state) => {
-        if (!state) return;
-        state.totalQuantity = state.items.reduce(
-          (s, i) => s + i.quantity,
-          0
-        );
-        state.totalPrice = state.items.reduce(
-          (s, i) => s + i.price * i.quantity,
-          0
-        );
-      },
     }
   )
 );
