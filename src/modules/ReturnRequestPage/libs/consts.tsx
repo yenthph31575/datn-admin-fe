@@ -18,6 +18,19 @@ export const RETURN_REQUEST_STATUS_COLORS = {
   COMPLETED: 'green',
 };
 
+export const RETURN_REQUEST_REASON_LABELS: Record<string, string> = {
+  wrong_item: 'Giao sai sản phẩm',
+  defective: 'Sản phẩm bị lỗi/hư hỏng',
+  missing_parts: 'Thiếu phụ kiện/quà tặng',
+  description_mismatch: 'Khác với mô tả',
+  other: 'Lý do khác',
+};
+
+export const RETURN_REQUEST_TYPE_LABELS: Record<string, string> = {
+  RETURN: 'Hoàn trả',
+  EXCHANGE: 'Đổi hàng',
+};
+
 export const COLUMNS = (refetch: any): ITableColumn[] => [
   {
     title: 'Mã đơn hàng',
@@ -30,8 +43,14 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     getCell: ({ row }: { row: IReturnRequest }) => <>{row.userId?.email || row.userId}</>,
   },
   {
+    title: 'Loại hoàn trả',
+    key: 'type',
+    getCell: ({ row }: { row: IReturnRequest }) => <>{RETURN_REQUEST_TYPE_LABELS[row.type] || row.type}</>,
+  },
+  {
     title: 'Lý do',
     key: 'reason',
+    getCell: ({ row }: { row: IReturnRequest }) => <>{RETURN_REQUEST_REASON_LABELS[row.reason] || row.reason}</>,
   },
   {
     title: 'Ngày tạo',
@@ -44,6 +63,16 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     getCell: ({ row }: { row: IReturnRequest }) => (
       <Badge color={RETURN_REQUEST_STATUS_COLORS[row.status]}>{RETURN_REQUEST_STATUS_LABELS[row.status]}</Badge>
     ),
+  },
+  {
+    title: 'User note',
+    key: 'description',
+    getCell: ({ row }: { row: IReturnRequest }) => <p className='line-clamp-2'>{row.description}</p>,
+  },
+  {
+    title: 'Admin note',
+    key: 'adminNote',
+    getCell: ({ row }: { row: IReturnRequest }) => <p className='line-clamp-2'>{row.adminNote}</p>,
   },
   {
     title: 'Hành động',
