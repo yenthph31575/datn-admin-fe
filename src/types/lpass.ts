@@ -27,8 +27,16 @@ interface CartState {
 }
 
 /* ================= HELPERS ================= */
-const clampQuantity = (value: number, min = 0) =>
-  Number.isFinite(value) ? Math.max(min, Math.floor(value)) : min;
+const clampQuantity = (value: number, min = 0): number => {
+  if (!Number.isFinite(value)) return min;
+  return Math.max(min, Math.floor(value));
+};
+
+const calcTotalQuantity = (items: CartItem[]) =>
+  items.reduce((sum, i) => sum + i.quantity, 0);
+
+const calcTotalPrice = (items: CartItem[]) =>
+  items.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
 /* ================= STORE ================= */
 export const useCartStore = create<CartState>()(
@@ -42,18 +50,18 @@ export const useCartStore = create<CartState>()(
           const q = clampQuantity(quantity, 1);
           const existed = state.items.find((i) => i.id === item.id);
 
-          if (existed) {
+          if (!existed) {
             return {
-              items: state.items.map((i) =>
-                i.id === item.id
-                  ? { ...i, quantity: i.quantity + q }
-                  : i
-              ),
+              items: [...state.items, { ...item, quantity: q }],
             };
           }
 
           return {
-            items: [...state.items, { ...item, quantity: q }],
+            items: state.items.map((i) =>
+              i.id === item.id
+                ? { ...i, quantity: i.quantity + q }
+                : i
+            ),
           };
         }),
 
@@ -61,11 +69,11 @@ export const useCartStore = create<CartState>()(
       updateQuantity: (id, delta) =>
         set((state) => ({
           items: state.items
-            .map((i) =>
-              i.id === id
-                ? { ...i, quantity: clampQuantity(i.quantity + delta) }
-                : i
-            )
+            .map((i) => {
+              if (i.id !== id) return i;
+              const nextQty = clampQuantity(i.quantity + delta);
+              return nextQty === i.quantity ? i : { ...i, quantity: nextQty };
+            })
             .filter((i) => i.quantity > 0),
         })),
 
@@ -73,13 +81,16 @@ export const useCartStore = create<CartState>()(
       setQuantity: (id, quantity) =>
         set((state) => {
           const q = clampQuantity(quantity);
+          if (q === 0) {
+            return { items: state.items.filter((i) => i.id !== id) };
+          }
+
           return {
-            items:
-              q === 0
-                ? state.items.filter((i) => i.id !== id)
-                : state.items.map((i) =>
-                    i.id === id ? { ...i, quantity: q } : i
-                  ),
+            items: state.items.map((i) =>
+              i.id === id && i.quantity !== q
+                ? { ...i, quantity: q }
+                : i
+            ),
           };
         }),
 
@@ -93,11 +104,8 @@ export const useCartStore = create<CartState>()(
       clearCart: () => set({ items: [] }),
 
       /* ================= TOTALS ================= */
-      totalQuantity: () =>
-        get().items.reduce((sum, i) => sum + i.quantity, 0),
-
-      totalPrice: () =>
-        get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
+      totalQuantity: () => calcTotalQuantity(get().items),
+      totalPrice: () => calcTotalPrice(get().items),
     }),
     {
       name: 'cart-storage',
