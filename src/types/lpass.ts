@@ -24,14 +24,14 @@ interface CartState {
 }
 
 /* ================= HELPERS ================= */
-const clamp = (v: number, min = 0, max = 999) =>
-  Number.isFinite(v)
-    ? Math.min(max, Math.max(min, Math.floor(v)))
-    : min;
+const clamp = (v: number, min = 0, max = 999) => {
+  if (!Number.isFinite(v)) return min;
+  return Math.min(max, Math.max(min, Math.floor(v)));
+};
 
 /* ================= STORE ================= */
 export const useCartStore = create<CartState>()(
-  persist(
+  persist<CartState>(
     (set) => ({
       items: [],
 
