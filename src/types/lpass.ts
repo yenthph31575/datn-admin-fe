@@ -27,8 +27,8 @@ interface CartState {
 }
 
 /* ================= HELPERS ================= */
-const clampQuantity = (value: number) =>
-  Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0;
+const clampQuantity = (value: number, min = 0) =>
+  Number.isFinite(value) ? Math.max(min, Math.floor(value)) : min;
 
 /* ================= STORE ================= */
 export const useCartStore = create<CartState>()(
@@ -39,17 +39,22 @@ export const useCartStore = create<CartState>()(
       /* ================= ADD ITEM ================= */
       addItem: ({ quantity = 1, ...item }) =>
         set((state) => {
+          const q = clampQuantity(quantity, 1);
           const existed = state.items.find((i) => i.id === item.id);
+
           if (existed) {
             return {
               items: state.items.map((i) =>
                 i.id === item.id
-                  ? { ...i, quantity: i.quantity + clampQuantity(quantity) }
+                  ? { ...i, quantity: i.quantity + q }
                   : i
               ),
             };
           }
-          return { items: [...state.items, { ...item, quantity: clampQuantity(quantity) }] };
+
+          return {
+            items: [...state.items, { ...item, quantity: q }],
+          };
         }),
 
       /* ================= UPDATE QUANTITY (+ / -) ================= */
@@ -88,11 +93,16 @@ export const useCartStore = create<CartState>()(
       clearCart: () => set({ items: [] }),
 
       /* ================= TOTALS ================= */
-      totalQuantity: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
-      totalPrice: () => get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
+      totalQuantity: () =>
+        get().items.reduce((sum, i) => sum + i.quantity, 0),
+
+      totalPrice: () =>
+        get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
     }),
     {
-      name: 'cart-storage', // lưu vào localStorage
+      name: 'cart-storage',
+      version: 1,
+      partialize: (state) => ({ items: state.items }),
     }
   )
 );
