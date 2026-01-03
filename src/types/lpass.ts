@@ -24,8 +24,10 @@ interface CartState {
 }
 
 /* ================= HELPERS ================= */
-const clamp = (v: number, min = 0) =>
-  Number.isFinite(v) ? Math.max(min, Math.floor(v)) : min;
+const clamp = (v: number, min = 0, max = 999) =>
+  Number.isFinite(v)
+    ? Math.min(max, Math.max(min, Math.floor(v)))
+    : min;
 
 /* ================= STORE ================= */
 export const useCartStore = create<CartState>()(
@@ -46,7 +48,7 @@ export const useCartStore = create<CartState>()(
           return {
             items: state.items.map((i) =>
               i.id === item.id
-                ? { ...i, quantity: i.quantity + q }
+                ? { ...i, quantity: clamp(i.quantity + q, 1) }
                 : i
             ),
           };
