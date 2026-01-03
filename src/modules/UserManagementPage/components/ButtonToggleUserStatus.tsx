@@ -20,7 +20,7 @@ const ButtonToggleUserStatus = ({ userId, isActive, refetch }: ButtonToggleUserS
       { id: userId, isActive: !isActive },
       {
         onSuccess: () => {
-          toast.success(`User ${!isActive ? 'activated' : 'deactivated'} successfully`);
+          toast.success(`Người dùng đã ${!isActive ? 'được kích hoạt' : 'bị vô hiệu hóa'} thành công`);
           setIsOpen(false);
           refetch();
         },
@@ -36,21 +36,21 @@ const ButtonToggleUserStatus = ({ userId, isActive, refetch }: ButtonToggleUserS
         <div>
           <p className="line-clamp-4 font-medium text-base">
             {isActive
-              ? 'Are you sure you want to deactivate this user? They will not be able to log in or use the platform until reactivated.'
-              : 'Are you sure you want to activate this user? They will be able to log in and use the platform.'}
+              ? 'Bạn có chắc chắn muốn vô hiệu hóa người dùng này không? Người dùng sẽ không thể đăng nhập hoặc sử dụng hệ thống cho đến khi được kích hoạt lại.'
+              : 'Bạn có chắc chắn muốn kích hoạt người dùng này không? Người dùng sẽ có thể đăng nhập và sử dụng hệ thống.'}
           </p>
         </div>
       }
       isOpen={isOpen}
       setIsOpen={setIsOpen}
-      title={isActive ? 'Deactivate User' : 'Activate User'}
+      title={isActive ? 'Vô hiệu hóa người dùng' : 'Kích hoạt người dùng'}
       variant="alert"
-      okText={isActive ? 'Deactivate' : 'Activate'}
-      cancelText="Cancel"
+      okText={isActive ? 'Vô hiệu hóa' : 'Kích hoạt'}
+      cancelText="Hủy"
       loading={isLoading}
     >
       <Button variant={isActive ? 'secondary' : 'default'} size="sm" onClick={() => setIsOpen(true)}>
-        {isActive ? 'Deactivate' : 'Activate'}
+        {isActive ? 'Vô hiệu hóa' : 'Kích hoạt'}
       </Button>
     </AlertDialogComponent>
   );

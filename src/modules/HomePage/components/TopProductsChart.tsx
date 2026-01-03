@@ -49,6 +49,7 @@ const TopProductsChart = () => {
 
               <SelectValue placeholder="Chỉ số" />
 
+
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="sales">Đã bán</SelectItem>
@@ -85,7 +86,9 @@ const TopProductsChart = () => {
                 formatter={(value, name) => {
                   if (name === 'revenue') {
 
+
                     return [`${formatCurrency(Number(value))}`, 'Doanh thu'];
+
 
                   }
                   return [formatNumber(value as any), 'Đã bán'];

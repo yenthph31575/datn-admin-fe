@@ -17,7 +17,9 @@ const TopProducts = () => {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
 
+
           <CardTitle>Sản phẩm nổi bật</CardTitle>
+
 
           <Skeleton className="h-4 w-20" />
         </CardHeader>
@@ -93,7 +95,9 @@ const TopProducts = () => {
                   <div className="font-medium text-sm">Trong kho: {product.stock}</div>
                   <div className={`text-xs ${product.stock < 20 ? 'text-red-500' : 'text-green-500'}`}>
 
+
                     {product.stock < 20 ? 'Sắp hết hàng' : 'Còn hàng'}
+
 
                   </div>
                 </div>

@@ -81,8 +81,8 @@ const TopCustomersChart = () => {
               <SelectItem value="totalSpent">Tổng chi tiêu</SelectItem>
 
               <SelectItem value="orderCount">Tổng đơn hàng</SelectItem>
-=======
-            
+
+
             </SelectContent>
           </Select>
 
@@ -101,7 +101,9 @@ const TopCustomersChart = () => {
 
           <Link href={ROUTER.USER_MANAGEMENT} className="text-blue-500 text-sm hover:underline">
 
+
             Xem tất cả
+
 
           </Link>
         </div>
@@ -156,9 +158,9 @@ const TopCustomersChart = () => {
                           <div className="text-sm">
                             <p>
 
+
                               <span className="font-medium">Tổng chi tiêu:</span> {formatCurrency(customer.totalSpent * 1000000)}
-=======
-                      
+
                             </p>
                             <p>
                               <span className="font-medium">Số đơn hàng:</span> {customer.orderCount}
@@ -166,8 +168,6 @@ const TopCustomersChart = () => {
                             <p>
 
                               <span className="font-medium">Đơn hàng gần nhất:</span> {format(new Date(customer.lastOrderDate), 'dd MMM yyyy')}
-=======
-                        
 
                             </p>
                           </div>
@@ -181,6 +181,8 @@ const TopCustomersChart = () => {
                 <Legend />
 
                 {metric === 'totalSpent' ? (
+
+
 
                   <Bar
                     dataKey="totalSpent"
@@ -198,12 +200,14 @@ const TopCustomersChart = () => {
                     barSize={32}
                   />
 
+
                 )}
               </BarChart>
             </ResponsiveContainer>
 
             {/* Danh sách khách hàng */}
             <div className="mt-6">
+
 
               <h3 className="mb-2 font-medium text-sm">Thông tin khách hàng</h3>
 
@@ -227,7 +231,9 @@ const TopCustomersChart = () => {
                       <p className="line-clamp-1 font-medium">{customer.displayName}</p>
                       <p className="text-gray-500 text-xs">{formatCurrency(customer.totalSpent * 1000000)}</p>
 
+
                       <p className="text-gray-500 text-xs">{customer.orderCount} Đơn hàng</p>
+
 
                     </div>
                   </VStack>
