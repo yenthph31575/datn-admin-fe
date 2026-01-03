@@ -48,6 +48,8 @@ export const useCartStore = create<CartState>()(
       addItem: ({ quantity = 1, ...item }) =>
         set((state) => {
           const q = clampQuantity(quantity, 1);
+          if (q <= 0) return state;
+
           const existed = state.items.find((i) => i.id === item.id);
 
           if (!existed) {
@@ -67,41 +69,57 @@ export const useCartStore = create<CartState>()(
 
       /* ================= UPDATE QUANTITY (+ / -) ================= */
       updateQuantity: (id, delta) =>
-        set((state) => ({
-          items: state.items
+        set((state) => {
+          let changed = false;
+
+          const items = state.items
             .map((i) => {
               if (i.id !== id) return i;
+
               const nextQty = clampQuantity(i.quantity + delta);
-              return nextQty === i.quantity ? i : { ...i, quantity: nextQty };
+              if (nextQty === i.quantity) return i;
+
+              changed = true;
+              return { ...i, quantity: nextQty };
             })
-            .filter((i) => i.quantity > 0),
-        })),
+            .filter((i) => i.quantity > 0);
+
+          return changed ? { items } : state;
+        }),
 
       /* ================= SET QUANTITY ================= */
       setQuantity: (id, quantity) =>
         set((state) => {
           const q = clampQuantity(quantity);
+
           if (q === 0) {
-            return { items: state.items.filter((i) => i.id !== id) };
+            const items = state.items.filter((i) => i.id !== id);
+            return items.length === state.items.length ? state : { items };
           }
 
-          return {
-            items: state.items.map((i) =>
-              i.id === id && i.quantity !== q
-                ? { ...i, quantity: q }
-                : i
-            ),
-          };
+          let changed = false;
+
+          const items = state.items.map((i) => {
+            if (i.id !== id || i.quantity === q) return i;
+            changed = true;
+            return { ...i, quantity: q };
+          });
+
+          return changed ? { items } : state;
         }),
 
       /* ================= REMOVE ITEM ================= */
       removeItem: (id) =>
-        set((state) => ({
-          items: state.items.filter((i) => i.id !== id),
-        })),
+        set((state) => {
+          const items = state.items.filter((i) => i.id !== id);
+          return items.length === state.items.length ? state : { items };
+        }),
 
       /* ================= CLEAR CART ================= */
-      clearCart: () => set({ items: [] }),
+      clearCart: () =>
+        set((state) =>
+          state.items.length === 0 ? state : { items: [] }
+        ),
 
       /* ================= TOTALS ================= */
       totalQuantity: () => calcTotalQuantity(get().items),
