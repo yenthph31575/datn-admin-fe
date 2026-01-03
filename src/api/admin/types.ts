@@ -1,4 +1,4 @@
-import type { IMetaResponse, ITableQuery } from '../../types/loginid';
+import type { IMetaResponse, ITableQuery } from '@/types/header';
 
 export interface IAdminQuery extends ITableQuery {}
 

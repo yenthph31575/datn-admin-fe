@@ -13,4 +13,5 @@ export const ROUTER = {
   SETTINGS: '/settings',
   PROFILE: '/profile',
   VOUCHER_MANAGEMENT: '/vouchers',
+  RETURN_REQUEST_MANAGEMENT: '/return-requests',
 } as const;

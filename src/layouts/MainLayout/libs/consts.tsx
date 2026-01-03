@@ -1,19 +1,17 @@
 'use client';
 
 import { ROUTER } from '@/libs/router';
-
-import { Icons } from '@/assets/icons';
 import {
-  LayoutDashboard,
-  ShieldCheck,
-  Users,
-  ImageIcon,
-  ListOrdered,
   Briefcase,
+  ImageIcon,
+  LayoutDashboard,
+  ListOrdered,
+  ShieldCheck,
   ShoppingBag,
-  Tag,
   ShoppingCart,
+  Tag,
   TicketPercent,
+  Users,
 } from 'lucide-react';
 
 export const sidebars: {
@@ -83,5 +81,11 @@ export const sidebars: {
     title: 'Quản Lý Đơn Hàng',
     link: ROUTER.ORDER_MANAGEMENT,
     iconActive: <ShoppingCart className="h-5 w-5 text-white" />,
+  },
+  {
+    icon: <Tag className="h-5 w-5" />,
+    title: 'Quản Lý Yêu Cầu Hoàn Trả',
+    link: ROUTER.RETURN_REQUEST_MANAGEMENT,
+    iconActive: <Tag className="h-5 w-5 text-white" />,
   },
 ];

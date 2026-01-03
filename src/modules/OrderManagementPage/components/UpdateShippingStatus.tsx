@@ -114,8 +114,9 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
                     <RadioGroupItem value={value} id={`shipping-${value}`} disabled={isDisabled} />
                     <label
                       htmlFor={`shipping-${value}`}
-                      className={`font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${value === selectedStatus ? 'text-primary' : ''
-                        } ${isDisabled ? 'text-gray-400' : ''}`}
+                      className={`font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${
+                        value === selectedStatus ? 'text-primary' : ''
+                      } ${isDisabled ? 'text-gray-400' : ''}`}
                     >
                       {SHIPPING_STATUS_OPTIONS.find((option) => option.value === value)?.label || value}
                       {isDisabled && value !== currentStatus && ' (không hợp lệ)'}

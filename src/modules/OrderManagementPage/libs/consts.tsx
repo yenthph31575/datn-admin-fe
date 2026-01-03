@@ -48,14 +48,12 @@ export const defaultQuery: Partial<IOrderQuery> = {
 };
 
 export const ORDER_STATUS_OPTIONS = [
-
   { value: OrderStatus.TO_PAY, label: 'Chờ thanh toán', color: 'bg-yellow-100 text-yellow-800' },
   { value: OrderStatus.COMPLETED, label: 'Hoàn thành', color: 'bg-green-100 text-green-800' },
   { value: OrderStatus.CANCELED, label: 'Đã hủy', color: 'bg-red-100 text-red-800' },
   { value: OrderStatus.REFUND, label: 'Hoàn tiền', color: 'bg-gray-100 text-gray-800' },
   { value: OrderStatus.EXPIRED, label: 'Hết hạn', color: 'bg-orange-100 text-orange-800' },
 ];
-
 
 export const SHIPPING_STATUS_OPTIONS = [
   { value: ShippingStatus.PENDING, label: 'Chờ xử lý', color: 'bg-yellow-100 text-yellow-800' },

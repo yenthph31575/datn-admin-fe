@@ -42,8 +42,7 @@ const ButtonDeleteBanner = ({ _id, refetch, className }: Props) => {
       cancelText={<>Quay lại</>}
       loading={isLoading}
     >
-      <Button size="sm" className="h-8"
-        onClick={() => setIsOpenModal(true)}>
+      <Button size="sm" className="h-8" onClick={() => setIsOpenModal(true)}>
         <Trash />
       </Button>
     </AlertDialogComponent>

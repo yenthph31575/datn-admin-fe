@@ -46,24 +46,14 @@ export const useCartStore = create<CartState>()(
           }
 
           return {
-            items: state.items.map((i) =>
-              i.id === item.id
-                ? { ...i, quantity: clamp(i.quantity + q, 1) }
-                : i
-            ),
+            items: state.items.map((i) => (i.id === item.id ? { ...i, quantity: clamp(i.quantity + q, 1) } : i)),
           };
         }),
 
       /* ===== +/- QUANTITY ===== */
       updateQuantity: (id, delta) =>
         set((state) => ({
-          items: state.items
-            .map((i) =>
-              i.id === id
-                ? { ...i, quantity: clamp(i.quantity + delta) }
-                : i
-            )
-            .filter((i) => i.quantity > 0),
+          items: state.items.map((i) => (i.id === id ? { ...i, quantity: clamp(i.quantity + delta) } : i)).filter((i) => i.quantity > 0),
         })),
 
       /* ===== SET QUANTITY ===== */
@@ -75,9 +65,7 @@ export const useCartStore = create<CartState>()(
           }
 
           return {
-            items: state.items.map((i) =>
-              i.id === id ? { ...i, quantity: q } : i
-            ),
+            items: state.items.map((i) => (i.id === id ? { ...i, quantity: q } : i)),
           };
         }),
 

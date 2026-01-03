@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 /* ================= TYPES ================= */
 
@@ -10,7 +10,7 @@ export interface CartItem {
   image?: string;
 }
 
-export type AddItemPayload = Omit<CartItem, "quantity">;
+export type AddItemPayload = Omit<CartItem, 'quantity'>;
 
 export interface CartState {
   items: CartItem[];
@@ -38,11 +38,7 @@ export const useCartStore = create<CartState>((set, get) => ({
 
       if (found) {
         return {
-          items: state.items.map((i) =>
-            i.id === item.id
-              ? { ...i, quantity: i.quantity + 1 }
-              : i
-          ),
+          items: state.items.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i)),
         };
       }
 
@@ -54,13 +50,7 @@ export const useCartStore = create<CartState>((set, get) => ({
   /* UPDATE (+ / -) */
   updateQuantity: (id, delta) =>
     set((state) => ({
-      items: state.items
-        .map((i) =>
-          i.id === id
-            ? { ...i, quantity: i.quantity + delta }
-            : i
-        )
-        .filter((i) => i.quantity > 0),
+      items: state.items.map((i) => (i.id === id ? { ...i, quantity: i.quantity + delta } : i)).filter((i) => i.quantity > 0),
     })),
 
   /* SET QUANTITY */
@@ -75,9 +65,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       }
 
       return {
-        items: state.items.map((i) =>
-          i.id === id ? { ...i, quantity: q } : i
-        ),
+        items: state.items.map((i) => (i.id === id ? { ...i, quantity: q } : i)),
       };
     }),
 
@@ -91,12 +79,7 @@ export const useCartStore = create<CartState>((set, get) => ({
   clearCart: () => set({ items: [] }),
 
   /* TOTALS */
-  totalQuantity: () =>
-    get().items.reduce((sum, i) => sum + i.quantity, 0),
+  totalQuantity: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
 
-  totalPrice: () =>
-    get().items.reduce(
-      (sum, i) => sum + i.price * i.quantity,
-      0
-    ),
+  totalPrice: () => get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
 }));

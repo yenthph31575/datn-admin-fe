@@ -1,5 +1,5 @@
-import type { StateCreator } from "zustand";
-import { create } from "zustand";
+import type { StateCreator } from 'zustand';
+import { create } from 'zustand';
 
 /* ================= TYPES ================= */
 
@@ -11,7 +11,7 @@ export interface CartItem {
   image?: string;
 }
 
-export type AddItemPayload = Omit<CartItem, "quantity">;
+export type AddItemPayload = Omit<CartItem, 'quantity'>;
 
 export interface CartState {
   items: CartItem[];
@@ -39,11 +39,7 @@ const cartStore: StateCreator<CartState> = (set, get) => ({
 
       if (existing) {
         return {
-          items: state.items.map((i) =>
-            i.id === item.id
-              ? { ...i, quantity: i.quantity + 1 }
-              : i
-          ),
+          items: state.items.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i)),
         };
       }
 
@@ -55,13 +51,7 @@ const cartStore: StateCreator<CartState> = (set, get) => ({
   /* UPDATE (+ / -) */
   updateQuantity: (id, delta) =>
     set((state) => ({
-      items: state.items
-        .map((i) =>
-          i.id === id
-            ? { ...i, quantity: i.quantity + delta }
-            : i
-        )
-        .filter((i) => i.quantity > 0),
+      items: state.items.map((i) => (i.id === id ? { ...i, quantity: i.quantity + delta } : i)).filter((i) => i.quantity > 0),
     })),
 
   /* SET QUANTITY */
@@ -76,9 +66,7 @@ const cartStore: StateCreator<CartState> = (set, get) => ({
       }
 
       return {
-        items: state.items.map((i) =>
-          i.id === id ? { ...i, quantity: q } : i
-        ),
+        items: state.items.map((i) => (i.id === id ? { ...i, quantity: q } : i)),
       };
     }),
 
@@ -92,14 +80,9 @@ const cartStore: StateCreator<CartState> = (set, get) => ({
   clearCart: () => set({ items: [] }),
 
   /* TOTALS */
-  totalQuantity: () =>
-    get().items.reduce((sum, i) => sum + i.quantity, 0),
+  totalQuantity: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
 
-  totalPrice: () =>
-    get().items.reduce(
-      (sum, i) => sum + i.price * i.quantity,
-      0
-    ),
+  totalPrice: () => get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
 });
 
 /* ================= EXPORT ================= */

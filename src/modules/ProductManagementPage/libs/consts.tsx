@@ -92,7 +92,9 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     key: 'createdAt',
     align: 'left',
     getCell: ({ row }) => (
-      <div className="px-2 py-1 text-center text-xs">{row?.createdAt ? format(new Date(row?.createdAt), 'dd/MM/yyyy HH:mm') : 'Chưa có'}</div>
+      <div className="px-2 py-1 text-center text-xs">
+        {row?.createdAt ? format(new Date(row?.createdAt), 'dd/MM/yyyy HH:mm') : 'Chưa có'}
+      </div>
     ),
   },
   {
