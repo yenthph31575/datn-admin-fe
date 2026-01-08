@@ -1,9 +1,4 @@
-import type {
-  FC,
-  HTMLAttributes,
-  PropsWithChildren,
-  SVGProps,
-} from "react";
+import type { FC, HTMLAttributes, PropsWithChildren, SVGProps } from 'react';
 
 /* =====================================================
  * COMMON TYPES
@@ -22,7 +17,6 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
   color?: string;
 };
 
-
 /* =====================================================
  * ERROR / API ERROR
  * ===================================================== */
@@ -37,7 +31,6 @@ export interface ErrorMutate {
   dynamicData?: Record<string, unknown>;
 }
 
-
 /* =====================================================
  * UI
  * ===================================================== */
@@ -45,12 +38,10 @@ export interface ErrorMutate {
 /**
  * Props cho component Text / Heading
  */
-export interface TextProps
-  extends HTMLAttributes<HTMLHeadingElement> {
-  variant?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+export interface TextProps extends HTMLAttributes<HTMLHeadingElement> {
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   color?: string;
 }
-
 
 /* =====================================================
  * TABLE / QUERY
@@ -60,10 +51,9 @@ export interface ITableQuery {
   page: number;
   limit: number;
   sortKey?: string;
-  sortOrder?: "asc" | "desc";
+  sortOrder?: 'asc' | 'desc';
   search?: string;
 }
-
 
 /* =====================================================
  * API META RESPONSE (DATA TỪ BACKEND)
@@ -78,7 +68,6 @@ export interface IMetaResponse {
   limit: number;
   total: number;
 }
-
 
 /* =====================================================
  * PAGINATION (DATA DÙNG CHO UI)

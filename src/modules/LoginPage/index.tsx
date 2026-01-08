@@ -49,30 +49,16 @@ const LoginPage = () => {
 
   return (
     <VStack justify="center" align="center" className="mx-2 h-[100vh]">
-      <div
-        className="-z-10 fixed inset-0 bg-cover bg-repeat opacity-65"
-        style={{ backgroundImage: "url('/images/background.png')" }}
-      >
-        <div
-          className="h-full w-full"
-          style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}
-        ></div>
+      <div className="-z-10 fixed inset-0 bg-cover bg-repeat opacity-65" style={{ backgroundImage: "url('/images/background.png')" }}>
+        <div className="h-full w-full" style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}></div>
       </div>
 
       <HStack className="mb-3" pos="center">
-        <Image
-          width={150}
-          height={92}
-          src="/images/logo.png"
-          alt="Logo"
-          className="h-auto w-[12rem]"
-        />
+        <Image width={150} height={92} src="/images/logo.png" alt="Logo" className="h-auto w-[12rem]" />
       </HStack>
 
       <VStack className="w-full max-w-[450px] rounded-lg border bg-[#FFFFFF26] px-6 py-6 shadow-card-2 md:px-8" spacing={16}>
-        <h1 className="mb-5 text-center font-semibold text-2xl md:text-3xl">
-          Đăng nhập Admin
-        </h1>
+        <h1 className="mb-5 text-center font-semibold text-2xl md:text-3xl">Đăng nhập Admin</h1>
 
         <FormWrapper form={form} onSubmit={handleSubmit}>
           <VStack spacing={32}>

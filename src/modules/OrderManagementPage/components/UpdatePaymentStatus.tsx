@@ -70,8 +70,9 @@ const UpdatePaymentStatus = ({ orderId, currentStatus, refetch }: UpdatePaymentS
                     <RadioGroupItem value={value} id={`payment-${value}`} disabled={isDisabled} />
                     <label
                       htmlFor={`payment-${value}`}
-                      className={`font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${value === selectedStatus ? 'text-primary' : ''
-                        } ${isDisabled ? 'text-gray-400' : ''}`}
+                      className={`font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${
+                        value === selectedStatus ? 'text-primary' : ''
+                      } ${isDisabled ? 'text-gray-400' : ''}`}
                     >
                       {PAYMENT_STATUS_OPTIONS.find((option) => option.value === value)?.label || value}
                       {isDisabled && value !== currentStatus && ' (invalid transition)'}

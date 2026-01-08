@@ -71,7 +71,6 @@ const TopCustomersChart = () => {
       <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2">
         <CardTitle>Top Khách Hàng</CardTitle>
         <div className="flex flex-wrap items-center gap-2">
-
           {/* Bộ lọc theo chỉ số */}
           <Select value={metric} onValueChange={(value) => setMetric(value as 'totalSpent' | 'orderCount')}>
             <SelectTrigger className="h-8 w-[120px]">
@@ -81,8 +80,6 @@ const TopCustomersChart = () => {
               <SelectItem value="totalSpent">Tổng chi tiêu</SelectItem>
 
               <SelectItem value="orderCount">Tổng đơn hàng</SelectItem>
-
-
             </SelectContent>
           </Select>
 
@@ -100,11 +97,7 @@ const TopCustomersChart = () => {
           </Select>
 
           <Link href={ROUTER.USER_MANAGEMENT} className="text-blue-500 text-sm hover:underline">
-
-
             Xem tất cả
-
-
           </Link>
         </div>
       </CardHeader>
@@ -118,17 +111,9 @@ const TopCustomersChart = () => {
           <>
             {/* Biểu đồ */}
             <ResponsiveContainer width="100%" height={350}>
-              <BarChart
-                data={chartData}
-                layout="vertical"
-                margin={{ top: 5, right: 30, left: 80, bottom: 5 }}
-              >
+              <BarChart data={chartData} layout="vertical" margin={{ top: 5, right: 30, left: 80, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                  type="number"
-                  fontSize={10}
-                  tickFormatter={(value) => formatCurrency(value * 1000000)}
-                />
+                <XAxis type="number" fontSize={10} tickFormatter={(value) => formatCurrency(value * 1000000)} />
                 <YAxis type="category" dataKey="name" tick={{ fontSize: 12 }} width={80} />
 
                 {/* Tooltip */}
@@ -157,18 +142,14 @@ const TopCustomersChart = () => {
 
                           <div className="text-sm">
                             <p>
-
-
                               <span className="font-medium">Tổng chi tiêu:</span> {formatCurrency(customer.totalSpent * 1000000)}
-
                             </p>
                             <p>
                               <span className="font-medium">Số đơn hàng:</span> {customer.orderCount}
                             </p>
                             <p>
-
-                              <span className="font-medium">Đơn hàng gần nhất:</span> {format(new Date(customer.lastOrderDate), 'dd MMM yyyy')}
-
+                              <span className="font-medium">Đơn hàng gần nhất:</span>{' '}
+                              {format(new Date(customer.lastOrderDate), 'dd MMM yyyy')}
                             </p>
                           </div>
                         </div>
@@ -181,36 +162,16 @@ const TopCustomersChart = () => {
                 <Legend />
 
                 {metric === 'totalSpent' ? (
-
-
-
-                  <Bar
-                    dataKey="totalSpent"
-                    fill="#8884d8"
-                    name="Tổng chi tiêu (Triệu)"
-                    radius={[0, 4, 4, 0]}
-                    barSize={32}
-                  />
+                  <Bar dataKey="totalSpent" fill="#8884d8" name="Tổng chi tiêu (Triệu)" radius={[0, 4, 4, 0]} barSize={32} />
                 ) : (
-                  <Bar
-                    dataKey="orderCount"
-                    fill="#82ca9d"
-                    name="Số lượng đơn hàng"
-                    radius={[0, 4, 4, 0]}
-                    barSize={32}
-                  />
-
-
+                  <Bar dataKey="orderCount" fill="#82ca9d" name="Số lượng đơn hàng" radius={[0, 4, 4, 0]} barSize={32} />
                 )}
               </BarChart>
             </ResponsiveContainer>
 
             {/* Danh sách khách hàng */}
             <div className="mt-6">
-
-
               <h3 className="mb-2 font-medium text-sm">Thông tin khách hàng</h3>
-
 
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {chartData.map((customer) => (
@@ -231,10 +192,7 @@ const TopCustomersChart = () => {
                       <p className="line-clamp-1 font-medium">{customer.displayName}</p>
                       <p className="text-gray-500 text-xs">{formatCurrency(customer.totalSpent * 1000000)}</p>
 
-
                       <p className="text-gray-500 text-xs">{customer.orderCount} Đơn hàng</p>
-
-
                     </div>
                   </VStack>
                 ))}
