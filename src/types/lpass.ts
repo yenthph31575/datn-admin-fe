@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 /* ================= TYPES ================= */
 export interface CartItem {
@@ -10,7 +10,9 @@ export interface CartItem {
   image?: string;
 }
 
-type AddItemPayload = Omit<CartItem, 'quantity'> & { quantity?: number };
+type AddItemPayload = Omit<CartItem, "quantity"> & {
+  quantity?: number;
+};
 
 interface CartState {
   items: CartItem[];
@@ -24,14 +26,16 @@ interface CartState {
 }
 
 /* ================= HELPERS ================= */
-const clamp = (v: number, min = 0, max = 999) => {
-  if (!Number.isFinite(v)) return min;
-  return Math.min(max, Math.max(min, Math.floor(v)));
+const MAX_QTY = 999;
+
+const clamp = (value: number, min = 0, max = MAX_QTY) => {
+  if (!Number.isFinite(value)) return min;
+  return Math.min(max, Math.max(min, value));
 };
 
 /* ================= STORE ================= */
 export const useCartStore = create<CartState>()(
-  persist<CartState>(
+  persist(
     (set) => ({
       items: [],
 
@@ -54,7 +58,7 @@ export const useCartStore = create<CartState>()(
           };
         }),
 
-      /* ===== +/- QUANTITY ===== */
+      /* ===== UPDATE (+ / -) ===== */
       updateQuantity: (id, delta) =>
         set((state) => ({
           items: state.items
@@ -66,19 +70,17 @@ export const useCartStore = create<CartState>()(
             .filter((i) => i.quantity > 0),
         })),
 
-      /* ===== SET QUANTITY ===== */
+      /* ===== SET EXACT ===== */
       setQuantity: (id, quantity) =>
         set((state) => {
           const q = clamp(quantity);
-          if (q === 0) {
-            return { items: state.items.filter((i) => i.id !== id) };
-          }
-
-          return {
-            items: state.items.map((i) =>
-              i.id === id ? { ...i, quantity: q } : i
-            ),
-          };
+          return q === 0
+            ? { items: state.items.filter((i) => i.id !== id) }
+            : {
+                items: state.items.map((i) =>
+                  i.id === id ? { ...i, quantity: q } : i
+                ),
+              };
         }),
 
       /* ===== REMOVE ===== */
@@ -91,7 +93,7 @@ export const useCartStore = create<CartState>()(
       clearCart: () => set({ items: [] }),
     }),
     {
-      name: 'cart-storage',
+      name: "cart-storage",
       version: 1,
       partialize: (state) => ({ items: state.items }),
     }
