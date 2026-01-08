@@ -67,4 +67,35 @@ export const useCartStore = create<CartState>()(
                 ? { ...i, quantity: clamp(i.quantity + delta) }
                 : i
             )
-            .fil
+            .filter((i) => i.quantity > 0),
+        })),
+
+      /* ===== SET EXACT ===== */
+      setQuantity: (id, quantity) =>
+        set((state) => {
+          const q = clamp(quantity);
+          return q === 0
+            ? { items: state.items.filter((i) => i.id !== id) }
+            : {
+                items: state.items.map((i) =>
+                  i.id === id ? { ...i, quantity: q } : i
+                ),
+              };
+        }),
+
+      /* ===== REMOVE ===== */
+      removeItem: (id) =>
+        set((state) => ({
+          items: state.items.filter((i) => i.id !== id),
+        })),
+
+      /* ===== CLEAR ===== */
+      clearCart: () => set({ items: [] }),
+    }),
+    {
+      name: "cart-storage",
+      version: 1,
+      partialize: (state) => ({ items: state.items }),
+    }
+  )
+);
