@@ -248,11 +248,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     align: 'center',
     getCell: ({ row }) => (
       <div className="px-2 py-1 text-center">
-        {row.returnRequest ? (
-          getReturnRequestStatusBadge(row.returnRequest.status)
-        ) : (
-          <span className="text-gray-400">Không có</span>
-        )}
+        {row.returnRequest ? getReturnRequestStatusBadge(row.returnRequest.status) : <span className="text-gray-400">Không có</span>}
       </div>
     ),
   },

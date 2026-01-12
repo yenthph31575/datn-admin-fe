@@ -67,12 +67,12 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
   {
     title: 'User note',
     key: 'description',
-    getCell: ({ row }: { row: IReturnRequest }) => <p className='line-clamp-2'>{row.description}</p>,
+    getCell: ({ row }: { row: IReturnRequest }) => <p className="line-clamp-2">{row.description}</p>,
   },
   {
     title: 'Admin note',
     key: 'adminNote',
-    getCell: ({ row }: { row: IReturnRequest }) => <p className='line-clamp-2'>{row.adminNote}</p>,
+    getCell: ({ row }: { row: IReturnRequest }) => <p className="line-clamp-2">{row.adminNote}</p>,
   },
   {
     title: 'Hành động',

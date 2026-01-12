@@ -14,7 +14,7 @@ export const getProducts = async (params: Partial<IProductQuery>): Promise<IProd
 export const getProductById = async (id: string): Promise<IProduct> => {
   const { data } = await client({
     url: `/api/admin/products/${id}`,
-    method: 'POST',
+    method: 'GET',
   });
   return data?.data;
 };

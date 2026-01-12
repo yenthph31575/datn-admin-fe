@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 /* ================= TYPES ================= */
 export interface CartItem {
@@ -10,7 +10,7 @@ export interface CartItem {
   image?: string;
 }
 
-type AddItemPayload = Omit<CartItem, "quantity"> & {
+type AddItemPayload = Omit<CartItem, 'quantity'> & {
   quantity?: number;
 };
 
@@ -50,24 +50,14 @@ export const useCartStore = create<CartState>()(
           }
 
           return {
-            items: state.items.map((i) =>
-              i.id === item.id
-                ? { ...i, quantity: clamp(i.quantity + q, 1) }
-                : i
-            ),
+            items: state.items.map((i) => (i.id === item.id ? { ...i, quantity: clamp(i.quantity + q, 1) } : i)),
           };
         }),
 
       /* ===== UPDATE (+ / -) ===== */
       updateQuantity: (id, delta) =>
         set((state) => ({
-          items: state.items
-            .map((i) =>
-              i.id === id
-                ? { ...i, quantity: clamp(i.quantity + delta) }
-                : i
-            )
-            .filter((i) => i.quantity > 0),
+          items: state.items.map((i) => (i.id === id ? { ...i, quantity: clamp(i.quantity + delta) } : i)).filter((i) => i.quantity > 0),
         })),
 
       /* ===== SET EXACT ===== */
@@ -77,9 +67,7 @@ export const useCartStore = create<CartState>()(
           return q === 0
             ? { items: state.items.filter((i) => i.id !== id) }
             : {
-                items: state.items.map((i) =>
-                  i.id === id ? { ...i, quantity: q } : i
-                ),
+                items: state.items.map((i) => (i.id === id ? { ...i, quantity: q } : i)),
               };
         }),
 
@@ -93,7 +81,7 @@ export const useCartStore = create<CartState>()(
       clearCart: () => set({ items: [] }),
     }),
     {
-      name: "cart-storage",
+      name: 'cart-storage',
       version: 1,
       partialize: (state) => ({ items: state.items }),
     }
