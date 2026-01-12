@@ -11,14 +11,18 @@ export type ReturnRequestStatusType = keyof typeof ReturnRequestStatus;
 
 export interface IReturnRequest {
   _id: string;
-  orderId: {
-    _id: string;
-    orderCode: string;
-  };
-  userId: {
-    _id: string;
-    email: string;
-  };
+  orderId:
+    | string
+    | {
+        _id: string;
+        orderCode: string;
+      };
+  userId:
+    | string
+    | {
+        _id: string;
+        email: string;
+      };
   email: string;
   type: 'RETURN' | 'EXCHANGE'; // Add other potential types if known
   reason: string;

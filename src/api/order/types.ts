@@ -1,4 +1,5 @@
-import type { IMetaResponse, ITableQuery } from '../../types/loginid';
+import type { IMetaResponse, ITableQuery } from '@/types/header';
+import type { IReturnRequest } from '../return-request/types';
 
 export const OrderStatus = {
   TO_PAY: 'TO_PAY',
@@ -74,6 +75,7 @@ export interface IOrder {
   paidAt?: string;
   shippedAt?: string;
   deliveredAt?: string;
+  returnRequest?: IReturnRequest;
 }
 
 export interface IOrderQuery extends ITableQuery {

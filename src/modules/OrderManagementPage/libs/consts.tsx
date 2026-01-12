@@ -6,6 +6,7 @@ import {
   ShippingStatus,
   type ShippingStatusType,
 } from '@/api/order/types';
+import { ReturnRequestStatus } from '@/api/return-request/types';
 import { Badge } from '@/components/ui/badge';
 import type { ITableColumn } from '@/components/ui/table';
 import { HStack } from '@/components/utilities';
@@ -70,6 +71,13 @@ export const PAYMENT_STATUS_OPTIONS = [
   { value: PaymentStatus.REFUNDED, label: 'Hoàn tiền', color: 'bg-gray-100 text-gray-800' },
 ];
 
+export const RETURN_REQUEST_STATUS_OPTIONS = [
+  { value: ReturnRequestStatus.PENDING, label: 'Chờ xử lý', color: 'bg-yellow-100 text-yellow-800' },
+  { value: ReturnRequestStatus.APPROVED, label: 'Đã duyệt', color: 'bg-blue-100 text-blue-800' },
+  { value: ReturnRequestStatus.REJECTED, label: 'Từ chối', color: 'bg-red-100 text-red-800' },
+  { value: ReturnRequestStatus.COMPLETED, label: 'Hoàn thành', color: 'bg-green-100 text-green-800' },
+];
+
 export const PAYMENT_METHOD_LABELS = {
   ONLINE_PAYMENT: 'Thanh toán online',
   CASH_ON_DELIVERY: 'Thanh toán khi nhận hàng',
@@ -87,6 +95,11 @@ export const getShippingStatusBadge = (status: string) => {
 
 export const getPaymentStatusBadge = (status: string) => {
   const statusOption = PAYMENT_STATUS_OPTIONS.find((option) => option.value === status);
+  return <Badge className={statusOption?.color || 'bg-gray-100 text-gray-800'}>{statusOption?.label || status}</Badge>;
+};
+
+export const getReturnRequestStatusBadge = (status: string) => {
+  const statusOption = RETURN_REQUEST_STATUS_OPTIONS.find((option) => option.value === status);
   return <Badge className={statusOption?.color || 'bg-gray-100 text-gray-800'}>{statusOption?.label || status}</Badge>;
 };
 
@@ -226,6 +239,20 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
         {row.shipperOfProof?.map((proof: string, index: number) => (
           <Image key={index} src={proof} alt={`Proof ${index + 1}`} width={80} height={80} className="rounded object-cover" />
         ))}
+      </div>
+    ),
+  },
+  {
+    title: 'Trạng thái hoàn trả',
+    key: 'returnStatus',
+    align: 'center',
+    getCell: ({ row }) => (
+      <div className="px-2 py-1 text-center">
+        {row.returnRequest ? (
+          getReturnRequestStatusBadge(row.returnRequest.status)
+        ) : (
+          <span className="text-gray-400">Không có</span>
+        )}
       </div>
     ),
   },

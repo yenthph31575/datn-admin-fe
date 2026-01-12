@@ -5,7 +5,7 @@ import { formatCurrency } from '@/libs/common';
 import { format } from 'date-fns';
 import { Eye } from 'lucide-react';
 import { useState } from 'react';
-import { PAYMENT_METHOD_LABELS, getPaymentStatusBadge, getShippingStatusBadge } from '../libs/consts';
+import { PAYMENT_METHOD_LABELS, getPaymentStatusBadge, getReturnRequestStatusBadge, getShippingStatusBadge } from '../libs/consts';
 
 interface OrderDetailDialogProps {
   order: IOrder | null;
@@ -88,6 +88,53 @@ const OrderDetailDialog = ({ order }: OrderDetailDialogProps) => {
                 </div>
               </div>
             </div>
+
+            {/* Return Request Info */}
+            {order?.returnRequest && (
+              <div className="mb-6 rounded-md border border-orange-200 bg-orange-50 p-3">
+                <div className="mb-2 flex items-center justify-between border-orange-200 border-b pb-2">
+                  <h3 className="font-semibold text-orange-700 text-sm">Thông tin yêu cầu hoàn trả</h3>
+                  {getReturnRequestStatusBadge(order.returnRequest.status)}
+                </div>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div>
+                    <p className="text-xs">
+                      <span className="font-medium">Loại:</span> {order.returnRequest.type === 'RETURN' ? 'Trả hàng' : 'Đổi hàng'}
+                    </p>
+                    <p className="text-xs">
+                      <span className="font-medium">Lý do:</span> {order.returnRequest.reason}
+                    </p>
+                    <p className="text-xs">
+                      <span className="font-medium">Mô tả:</span> {order.returnRequest.description}
+                    </p>
+                    <p className="text-xs">
+                      <span className="font-medium">Ngày yêu cầu:</span> {formatDateTime(order.returnRequest.createdAt)}
+                    </p>
+                  </div>
+                  {order.returnRequest.refundInfo && (
+                    <div className="rounded border border-orange-100 bg-white p-2">
+                      <p className="mb-1 font-medium text-orange-800 text-xs">Thông tin hoàn tiền</p>
+                      <p className="text-xs">
+                        <span className="font-medium text-gray-500">Ngân hàng:</span> {order.returnRequest.refundInfo.bankName}
+                      </p>
+                      <p className="text-xs">
+                        <span className="font-medium text-gray-500">Số tài khoản:</span> {order.returnRequest.refundInfo.bankAccount}
+                      </p>
+                      <p className="text-xs">
+                        <span className="font-medium text-gray-500">Tên tài khoản:</span> {order.returnRequest.refundInfo.bankAccountName}
+                      </p>
+                    </div>
+                  )}
+                </div>
+                {order.returnRequest.adminNote && (
+                  <div className="mt-2 border-orange-200 border-t pt-2">
+                    <p className="text-gray-600 text-xs italic">
+                      <span className="font-medium not-italic">Lưu ý của admin:</span> {order.returnRequest.adminNote}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Order Items */}
             <div className="mb-6">
