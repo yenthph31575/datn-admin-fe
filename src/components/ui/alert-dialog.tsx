@@ -98,7 +98,7 @@ type AlertDialogComponentProps = {
   okText?: React.ReactNode;
   cancelText?: React.ReactNode;
   variant?: 'success' | 'alert';
-  okType?: 'button' | 'submit';
+  okType?: 'button' | 'submit' | 'reset';
 };
 export const AlertDialogComponent: FCC<AlertDialogComponentProps> = ({
   loading,

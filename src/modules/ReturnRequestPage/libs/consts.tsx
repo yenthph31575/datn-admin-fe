@@ -40,7 +40,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
   {
     title: 'Người yêu cầu',
     key: 'userId',
-    getCell: ({ row }: { row: IReturnRequest }) => <>{row.userId?.email || row.userId}</>,
+    getCell: ({ row }: { row: IReturnRequest }) => <>{typeof row.userId === 'string' ? row.userId : row.userId?.email}</>,
   },
   {
     title: 'Loại hoàn trả',

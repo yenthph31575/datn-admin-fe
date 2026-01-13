@@ -48,7 +48,7 @@ const ReturnRequestDetailModal = ({ data, refetch }: Props) => {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <p className="font-medium text-gray-500 text-sm">Mã đơn hàng</p>
-              <p>{data.orderId.orderCode}</p>
+              <p>{typeof data.orderId === 'string' ? data.orderId : data.orderId.orderCode}</p>
             </div>
             <div>
               <p className="font-medium text-gray-500 text-sm">Trạng thái hiện tại</p>
@@ -64,7 +64,7 @@ const ReturnRequestDetailModal = ({ data, refetch }: Props) => {
             </div>
             <div className="col-span-2">
               <p className="font-medium text-gray-500 text-sm">Email người yêu cầu</p>
-              <p>{data.userId.email}</p>
+              <p>{typeof data.userId === 'string' ? data.userId : data.userId.email}</p>
             </div>
             <div className="col-span-2">
               <p className="font-medium text-gray-500 text-sm">Mô tả chi tiết</p>
