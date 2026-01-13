@@ -92,7 +92,7 @@ const OrderManagementPage = () => {
   ];
 
   const paymentMethodOptions = [
-    { label: 'All Payment Methods', value: 'ALL' },
+    { label: 'Tất cả phương thức thanh toán', value: 'ALL' },
     ...Object.entries(PAYMENT_METHOD_LABELS).map(([value, label]) => ({ label, value })),
   ];
 
