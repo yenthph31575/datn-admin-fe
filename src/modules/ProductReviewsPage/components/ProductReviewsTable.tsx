@@ -171,7 +171,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
       <Dialog open={showReviewDialog} onOpenChange={setShowReviewDialog}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Review Details</DialogTitle>
+            <DialogTitle>Chi tiết đánh giá</DialogTitle>
           </DialogHeader>
 
           {selectedReview && (
