@@ -236,7 +236,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
                   </p>
                 </div>
                 <div className="rounded-md bg-gray-50 p-3">
-                  <p className="font-medium text-gray-500 text-xs">Purchase Status</p>
+                  <p className="font-medium text-gray-500 text-xs">Tình trạng mua hàng</p>
                   <p className={`font-medium text-sm ${selectedReview.isPurchased ? 'text-purple-600' : 'text-gray-500'}`}>
                     {selectedReview.isPurchased ? 'Purchased' : 'Not Purchased'}
                   </p>
