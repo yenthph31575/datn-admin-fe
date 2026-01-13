@@ -201,7 +201,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
               </div>
 
               <div>
-                <p className="mb-1 font-medium text-gray-700 text-sm">Comment:</p>
+                <p className="mb-1 font-medium text-gray-700 text-sm">Bình luận:</p>
                 <p className="whitespace-pre-wrap rounded-md bg-gray-50 p-3 text-sm">{selectedReview.comment}</p>
               </div>
 
