@@ -82,7 +82,7 @@ const OrderManagementPage = () => {
   };
 
   const paymentStatusOptions = [
-    { label: 'All Payment Status', value: 'ALL' },
+    { label: 'Tất cả trạng thái thanh toán', value: 'ALL' },
     ...PAYMENT_STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
   ];
 
