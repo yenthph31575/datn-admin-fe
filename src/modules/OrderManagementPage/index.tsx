@@ -87,7 +87,7 @@ const OrderManagementPage = () => {
   ];
 
   const shippingStatusOptions = [
-    { label: 'All Shipping Status', value: 'ALL' },
+    { label: 'Tất cả trạng thái vận chuyển', value: 'ALL' },
     ...SHIPPING_STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
   ];
 
