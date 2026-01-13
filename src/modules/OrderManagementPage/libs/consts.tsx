@@ -253,7 +253,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     ),
   },
   {
-    title: 'Hành độngs',
+    title: 'Hành động',
     key: 'actions',
     align: 'center',
     className: 'w-[100px]',
