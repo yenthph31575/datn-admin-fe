@@ -151,7 +151,7 @@ export const inventoryStatusData = [
 // Recent activities
 export const recentActivities = [
   { id: 1, type: 'order', message: 'Đơn hàng mới #12345 đã được nhận', time: '5 phút trước' },
-  { id: 2, type: 'product', message: 'Sản phẩm "Smart Watch" sắp hết hàng', time: '25 phút trước' },
+  { id: 2, type: 'product', message: 'Sản phẩm "Smart watch" sắp hết hàng', time: '25 phút trước' },
   { id: 3, type: 'customer', message: 'Đăng ký khách hàng mới: Jane Smith', time: '1 giờ trước' },
   { id: 4, type: 'review', message: 'Đánh giá 5 sao mới cho "Tai nghe không dây"', time: '2 giờ trước' },
   { id: 5, type: 'order', message: 'Đơn hàng #12340 đã được giao', time: '3 giờ trước' },
