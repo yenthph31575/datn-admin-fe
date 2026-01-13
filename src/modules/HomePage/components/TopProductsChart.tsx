@@ -29,7 +29,7 @@ const TopProductsChart = () => {
     return (
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Top Sản phẩm Bán Chạy Nhất</CardTitle>
+          <CardTitle>Top Sản phẩm bán chạy nhất</CardTitle>
           <Skeleton className="h-4 w-20" />
         </CardHeader>
         <CardContent>
@@ -42,7 +42,7 @@ const TopProductsChart = () => {
   return (
     <Card>
       <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2">
-        <CardTitle>Top Sản phẩm Bán Chạy Nhất</CardTitle>
+        <CardTitle>Top Sản phẩm bán chạy nhất</CardTitle>
         <div className="flex flex-wrap items-center gap-2">
           <Select value={metric} onValueChange={(value) => setMetric(value as 'sales' | 'revenue')}>
             <SelectTrigger className="h-8 w-[120px]">
