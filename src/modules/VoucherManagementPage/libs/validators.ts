@@ -12,7 +12,7 @@ export const voucherSchema = z.object({
   }),
   value: z.string().min(0, { message: 'Giá trị phải là một số dương' }),
   minOrderValue: z.string().min(0, { message: 'Giá trị đơn hàng tối thiểu phải là một số dương' }),
-  maxDiscountValue: z.string().min(0, { message: 'Maximum discount value must be a positive number' }),
+  maxDiscountValue: z.string().min(0, { message: 'Giá trị giảm giá tối đa phải là một số dương' }),
   usageLimit: z.string().min(0, { message: 'Usage limit must be a positive integer' }),
   startDate: z.date({ required_error: validationMessages.required() }),
   endDate: z.date({ required_error: validationMessages.required() }),
