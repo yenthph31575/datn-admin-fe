@@ -19,7 +19,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     align: 'left',
   },
   {
-    title: 'Type',
+    title: 'Loại',
     key: 'type',
     align: 'center',
     getCell: ({ row }) => (
@@ -27,7 +27,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     ),
   },
   {
-    title: 'Value',
+    title: 'Giá trị',
     key: 'value',
     align: 'center',
     getCell: ({ row }) => <span>{row?.type === 'PERCENTAGE' ? `${row?.value}%` : `$${formatNumber(row?.value)}`}</span>,
