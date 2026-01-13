@@ -159,7 +159,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
       <Dialog open={showImageDialog} onOpenChange={setShowImageDialog}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Review Image</DialogTitle>
+            <DialogTitle>Hình ảnh đánh giá</DialogTitle>
           </DialogHeader>
           <div className="relative h-[60vh] w-full">
             {imageUrl && <Image src={imageUrl} alt="Review image" fill className="object-contain" />}
