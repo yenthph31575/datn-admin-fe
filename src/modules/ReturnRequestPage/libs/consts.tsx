@@ -65,7 +65,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     ),
   },
   {
-    title: 'User note',
+    title: 'Ghi chú của người dùng',
     key: 'description',
     getCell: ({ row }: { row: IReturnRequest }) => <p className="line-clamp-2">{row.description}</p>,
   },
