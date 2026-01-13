@@ -70,7 +70,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     getCell: ({ row }: { row: IReturnRequest }) => <p className="line-clamp-2">{row.description}</p>,
   },
   {
-    title: 'Admin note',
+    title: 'Ghi chú của admin',
     key: 'adminNote',
     getCell: ({ row }: { row: IReturnRequest }) => <p className="line-clamp-2">{row.adminNote}</p>,
   },
