@@ -56,7 +56,7 @@ const TopCustomersChart = () => {
     return (
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Top Khách Hàng</CardTitle>
+          <CardTitle>Top khách hàng</CardTitle>
           <Skeleton className="h-4 w-20" />
         </CardHeader>
         <CardContent>
@@ -69,7 +69,7 @@ const TopCustomersChart = () => {
   return (
     <Card>
       <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2">
-        <CardTitle>Top Khách Hàng</CardTitle>
+        <CardTitle>Top khách hàng</CardTitle>
         <div className="flex flex-wrap items-center gap-2">
           {/* Bộ lọc theo chỉ số */}
           <Select value={metric} onValueChange={(value) => setMetric(value as 'totalSpent' | 'orderCount')}>
