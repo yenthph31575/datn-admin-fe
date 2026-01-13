@@ -95,8 +95,8 @@ const ReturnRequestDetailModal = ({ data, refetch }: Props) => {
               {data.items.map((item, idx) => (
                 <div key={idx} className="flex gap-4 text-sm">
                   <div className="flex-1">
-                    <p className="font-medium">Product ID: {item.productId}</p>
-                    <p className="text-gray-500">Variant ID: {item.variantId}</p>
+                    <p className="font-medium">ID sản phẩm: {item.productId}</p>
+                    <p className="text-gray-500">ID biến thể: {item.variantId}</p>
                     <p>Số lượng: {item.quantity}</p>
                   </div>
                 </div>
