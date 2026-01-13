@@ -207,7 +207,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
 
               {selectedReview.images && selectedReview.images.length > 0 && (
                 <div>
-                  <p className="mb-2 font-medium text-gray-700 text-sm">Images:</p>
+                  <p className="mb-2 font-medium text-gray-700 text-sm">Hình ảnh:</p>
                   <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
                     {selectedReview.images.map((img, idx) => (
                       <div
