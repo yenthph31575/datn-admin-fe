@@ -244,7 +244,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
               </div>
 
               <div className="text-right text-gray-500 text-xs">
-                Created: {format(new Date(selectedReview.createdAt), 'dd MMM yyyy HH:mm')}
+                Ngày tạo: {format(new Date(selectedReview.createdAt), 'dd MMM yyyy HH:mm')}
                 <br />
                 Updated: {format(new Date(selectedReview.updatedAt), 'dd MMM yyyy HH:mm')}
               </div>
