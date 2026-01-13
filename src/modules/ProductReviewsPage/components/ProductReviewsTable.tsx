@@ -111,7 +111,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
                       )}
                     </div>
                   ) : (
-                    <span className="text-gray-400">No images</span>
+                    <span className="text-gray-400">Không có hình ảnh</span>
                   )}
                 </td>
                 <td className="p-3">
@@ -159,7 +159,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
       <Dialog open={showImageDialog} onOpenChange={setShowImageDialog}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Review Image</DialogTitle>
+            <DialogTitle>Hình ảnh đánh giá</DialogTitle>
           </DialogHeader>
           <div className="relative h-[60vh] w-full">
             {imageUrl && <Image src={imageUrl} alt="Review image" fill className="object-contain" />}
@@ -171,7 +171,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
       <Dialog open={showReviewDialog} onOpenChange={setShowReviewDialog}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Review Details</DialogTitle>
+            <DialogTitle>Chi tiết đánh giá</DialogTitle>
           </DialogHeader>
 
           {selectedReview && (
@@ -201,13 +201,13 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
               </div>
 
               <div>
-                <p className="mb-1 font-medium text-gray-700 text-sm">Comment:</p>
+                <p className="mb-1 font-medium text-gray-700 text-sm">Bình luận:</p>
                 <p className="whitespace-pre-wrap rounded-md bg-gray-50 p-3 text-sm">{selectedReview.comment}</p>
               </div>
 
               {selectedReview.images && selectedReview.images.length > 0 && (
                 <div>
-                  <p className="mb-2 font-medium text-gray-700 text-sm">Images:</p>
+                  <p className="mb-2 font-medium text-gray-700 text-sm">Hình ảnh:</p>
                   <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
                     {selectedReview.images.map((img, idx) => (
                       <div
@@ -224,19 +224,19 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
 
               <div className="grid grid-cols-3 gap-2">
                 <div className="rounded-md bg-gray-50 p-3">
-                  <p className="font-medium text-gray-500 text-xs">Status</p>
+                  <p className="font-medium text-gray-500 text-xs">Trạng thái</p>
                   <p className={`font-medium text-sm ${selectedReview.isActive ? 'text-green-600' : 'text-gray-500'}`}>
                     {selectedReview.isActive ? 'Active' : 'Inactive'}
                   </p>
                 </div>
                 <div className="rounded-md bg-gray-50 p-3">
-                  <p className="font-medium text-gray-500 text-xs">Verification</p>
+                  <p className="font-medium text-gray-500 text-xs">Xác minh</p>
                   <p className={`font-medium text-sm ${selectedReview.isVerified ? 'text-blue-600' : 'text-gray-500'}`}>
                     {selectedReview.isVerified ? 'Verified' : 'Unverified'}
                   </p>
                 </div>
                 <div className="rounded-md bg-gray-50 p-3">
-                  <p className="font-medium text-gray-500 text-xs">Purchase Status</p>
+                  <p className="font-medium text-gray-500 text-xs">Tình trạng mua hàng</p>
                   <p className={`font-medium text-sm ${selectedReview.isPurchased ? 'text-purple-600' : 'text-gray-500'}`}>
                     {selectedReview.isPurchased ? 'Purchased' : 'Not Purchased'}
                   </p>
@@ -244,9 +244,9 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
               </div>
 
               <div className="text-right text-gray-500 text-xs">
-                Created: {format(new Date(selectedReview.createdAt), 'dd MMM yyyy HH:mm')}
+                Ngày tạo: {format(new Date(selectedReview.createdAt), 'dd MMM yyyy HH:mm')}
                 <br />
-                Updated: {format(new Date(selectedReview.updatedAt), 'dd MMM yyyy HH:mm')}
+                Ngày cập nhật: {format(new Date(selectedReview.updatedAt), 'dd MMM yyyy HH:mm')}
               </div>
             </div>
           )}
