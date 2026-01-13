@@ -111,7 +111,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
                       )}
                     </div>
                   ) : (
-                    <span className="text-gray-400">No images</span>
+                    <span className="text-gray-400">Không có hình ảnh</span>
                   )}
                 </td>
                 <td className="p-3">
