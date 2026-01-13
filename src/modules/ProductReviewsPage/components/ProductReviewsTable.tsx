@@ -224,7 +224,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
 
               <div className="grid grid-cols-3 gap-2">
                 <div className="rounded-md bg-gray-50 p-3">
-                  <p className="font-medium text-gray-500 text-xs">Status</p>
+                  <p className="font-medium text-gray-500 text-xs">Trạng thái</p>
                   <p className={`font-medium text-sm ${selectedReview.isActive ? 'text-green-600' : 'text-gray-500'}`}>
                     {selectedReview.isActive ? 'Active' : 'Inactive'}
                   </p>
