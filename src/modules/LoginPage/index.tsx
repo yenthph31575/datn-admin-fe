@@ -78,7 +78,7 @@ const LoginPage = () => {
               control={form.control}
               name="password"
               label="Mật khẩu"
-              placeholder="Mời nhập mật khẩu"
+              placeholder="Nhập mật khẩu"
               type="password"
               inputSize="md"
             />
