@@ -230,7 +230,7 @@ const ProductReviewsTable = ({ reviews, isLoading, pagination, onPageChange, onP
                   </p>
                 </div>
                 <div className="rounded-md bg-gray-50 p-3">
-                  <p className="font-medium text-gray-500 text-xs">Verification</p>
+                  <p className="font-medium text-gray-500 text-xs">Xác minh</p>
                   <p className={`font-medium text-sm ${selectedReview.isVerified ? 'text-blue-600' : 'text-gray-500'}`}>
                     {selectedReview.isVerified ? 'Verified' : 'Unverified'}
                   </p>
