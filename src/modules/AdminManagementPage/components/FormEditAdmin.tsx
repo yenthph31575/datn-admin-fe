@@ -49,7 +49,7 @@ const FormEditAdmin = ({ refetch, _id }: Props) => {
       { formData: { ...formData, password: (formData.password ? formData.password : undefined) as any }, id: String(_id) },
       {
         onSuccess: () => {
-          toast.success('Cập nhật admin thành công!');
+          toast.success('Cập nhật Admin thành công!');
           setIsOpenModal(false);
           refetch();
         },
@@ -78,7 +78,7 @@ const FormEditAdmin = ({ refetch, _id }: Props) => {
             </span>
           </HStack>
 
-          <H3 className="mt-4">Sửa admin</H3>
+          <H3 className="mt-4">Sửa Admin</H3>
 
           <div className="my-6">
             <FormWrapper form={form} onSubmit={handleSubmit}>
