@@ -82,17 +82,17 @@ const OrderManagementPage = () => {
   };
 
   const paymentStatusOptions = [
-    { label: 'All Payment Status', value: 'ALL' },
+    { label: 'Tất cả trạng thái thanh toán', value: 'ALL' },
     ...PAYMENT_STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
   ];
 
   const shippingStatusOptions = [
-    { label: 'All Shipping Status', value: 'ALL' },
+    { label: 'Tất cả trạng thái vận chuyển', value: 'ALL' },
     ...SHIPPING_STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
   ];
 
   const paymentMethodOptions = [
-    { label: 'All Payment Methods', value: 'ALL' },
+    { label: 'Tất cả phương thức thanh toán', value: 'ALL' },
     ...Object.entries(PAYMENT_METHOD_LABELS).map(([value, label]) => ({ label, value })),
   ];
 
