@@ -69,7 +69,7 @@ const LoginPage = () => {
               control={form.control}
               name="identifier"
               label="Tên đăng nhập"
-              placeholder="Mời nhập tên đăng nhập"
+              placeholder="Nhập tên đăng nhập"
             />
 
             <TextField
