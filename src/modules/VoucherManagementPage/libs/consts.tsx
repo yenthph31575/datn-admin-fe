@@ -19,7 +19,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     align: 'left',
   },
   {
-    title: 'Type',
+    title: 'Loại',
     key: 'type',
     align: 'center',
     getCell: ({ row }) => (
