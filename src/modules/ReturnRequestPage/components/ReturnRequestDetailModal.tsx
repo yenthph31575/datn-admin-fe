@@ -96,7 +96,7 @@ const ReturnRequestDetailModal = ({ data, refetch }: Props) => {
                 <div key={idx} className="flex gap-4 text-sm">
                   <div className="flex-1">
                     <p className="font-medium">ID sản phẩm: {item.productId}</p>
-                    <p className="text-gray-500">ID: {item.variantId}</p>
+                    <p className="text-gray-500">ID biến thể: {item.variantId}</p>
                     <p>Số lượng: {item.quantity}</p>
                   </div>
                 </div>
